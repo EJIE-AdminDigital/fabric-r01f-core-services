@@ -1,0 +1,36 @@
+<nexmo>	
+    <apiKey>4a1491ab</apiKey>
+    <apiSecret>uztIC6uqGQw7l1JE</apiSecret>
+    <voicePhoneNumber>14157386170</voicePhoneNumber>
+    <smsPhoneNumber>14157386170</smsPhoneNumber>
+    <messagingPhoneNumber>14157386170</messagingPhoneNumber>
+    <restResouceURIForMessagingApplication>https://messages-sandbox.nexmo.com/v0.1/messages</restResouceURIForMessagingApplication>
+    <applicationId>z99</applicationId>
+    <privateKey><![CDATA[MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCYOljteHtXnD2i
+/qwD/1z1CwPXhZ3N++b26M/9dQKkQlyFcAXIBnlx58GPX24aiL6qdyx7xvApJ4kM
+UC2qzzBG8VzO9oRizJ0GOmImfn0Cn74m+642AgkkWdmtNy4l0FjHQqh/RvAKtGw6
+AmGT2glVZ/+dqiV8trhbu7Oc00Ljsj8QAjFHC+HPqurIZs+kBuUKHQ+Hv21BdNrP
+TdSDexP8k9c1LYwP0iZD4Ufxo3syMG7tju3cASM5hdyStM8P/xWPHGQ3pif2WU0w
+hts6LajhuMuAlcIWwtRWp/rqWH87VV3IQ9MSTTTL1+74L0RHSBhEkqQNp5wIA+Go
+1uUofc0zAgMBAAECggEAAcitQhsnVt992WsimOllLXnzkZL/RmqtSjdwOIgmf8ZH
+T0kAyFdLFQqiOgvkPmtb0KOU4d5y8giEkqBd6KKE7k/lxocdBgtfy7Ljc5AH5v/4
+Ony4jel4MfTbmCwNXmQSpkMhtlwedAGpQwTEH/duJJITbMWRquR5RJnugOf44LIx
+aNv91ULq8vmon/HKRayoidpL4jLk2aR/dugnzohx6D3OAHrhDJ3yg5H7MrjzSq5N
+VVUkBhajA2j+gp57iyOScQsKXVNJdk2GBebqeqgzgetOHKLrdkMcKP0Kruo7cN3y
+ujTCSPjP47nsdBUmG1/nQAfyJc8R4ZRMwuq56ox4AQKBgQDQNZ+0/D/RcbqXkNZn
+pmzNV+4BsIehvS+7Jb6UB7K3Ips4034r1AdiSSRnI1fPBeMBY7iIc9otoA3099wl
+t2OkJNie7iymA0Sf0He/YAGsXHL6HNtt5znhXweJY+gXzYenVZWVvkagh+f/1jhq
+yd7CJWvCZDg0RePNVIF+8BrTXwKBgQC7K0BBNTapEbx1WW0AK0qwMT0kV6Acq9IW
+hwUDll2Mn2aJnrmIZssOI+f0kj8AS8VsU63xqe6XlXdDu9lGI5GVNcVNKkHpa2s8
+O777U/HuewB5aLehIALO7zni33eeZVcuZYS+Faj1a1U1IW4ephMgz2t9E7Is4BCh
+7IEfIOzKrQKBgAN0ED0RPgG8UCr5ZQT9FqrlPXZbtjQxjhwdiSatZgJxmX98yofx
+kVnI+siXJnqxj01TmRjySvkcwX6Bqe4aN5XeYpVoP+dVAItiCspqzjxMoD+TwPP2
+tNgPGnHl7VCPwSM+YSfFqyg4eNmedPsYdBBmTH5B6Ui8rAWY1DkFxHwjAoGACBdB
+itATEdHrdKMt/BDjBKTMQNLs3/Bpf4HMrLAGUTrewtoyqPvQkUbqEv9za77axOkF
+Huo6nyDd6/al2MtW0r1lTwWhncZ/9zWZ9uFVFvsINTdaoMNye6GJvg3s7NLyptXK
+nDDxgdJm94n/aaHCN+vfeKOuUxRIg8dmeYMB2W0CgYEAnSa/dOaehOQN24mWsriV
+s100CO4NqeTnt3cgLHP7972xSQhyDYCbuKXmhoNXnk2EPUNHYDGRdRMbH7+sy5TN
+b3QLbV/rocRYefcIeS1Ax+Ggfm5hRqTmqyIn5c8c13T5oTDy08rf/YnOSFhsl1gh
+U+2BHFDiCmfvjasHLZCS6VQ=]]></privateKey>
+</nexmo> 
+

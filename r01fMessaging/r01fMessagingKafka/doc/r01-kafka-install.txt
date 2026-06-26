@@ -1,0 +1,64 @@
+
+KAFKA SETUP STEPS
+===================
+
+
+Prerequisites:
+--------------
+https://www.confluent.io/es-es/blog/set-up-and-run-kafka-on-windows-linux-wsl-2/
+- wsl2
+- java
+
+STEPS
+___________________________________________________________
+
+Steps:         https://kontext.tech/article/1047/install-and-run-kafka-320-on-wsl
+Code Samples : https://developers.redhat.com/articles/2022/06/02/how-create-kafka-consumers-and-producers-java#prerequisites
+
+1. [ Download latest Kafka ]
+
+    wget https://dlcdn.apache.org/kafka/3.2.0/kafka_2.13-3.2.0.tgz
+
+2. [ Unzip TAR ]
+
+    tar -xvzf  kafka_2.13-3.2.0.tgz
+
+3. [ Start Zookeeper & Kafka ]
+
+	$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
+	$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
+
+
+4.  [Create a Topic]
+
+	$KAFKA_HOME/bin/kafka-topics.sh --create --topic   default-topic  --bootstrap-server localhost:9092
+        $KAFKA_HOME/bin/kafka-topics.sh --describe --topic default-topic --bootstrap-server localhost:9092
+
+------ if  wsl2/localhost is no visible from window:
+[wsl2 <ifconfig
+[cmd ]
+netsh interface portproxy add v4tov4 listenport=9092 listenaddress=0.0.0.0 connectport=9092 connectaddress=192.168.149.226
+
+
+
+5. [Read events ]
+
+ $KAFKA_HOME/bin/kafka-console-consumer.sh --topic default-topic --from-beginning --bootstrap-server localhost:9092
+
+
+
+Disable IPv6 on WSL2:  https://diocesanos.es/blogs/equipotic/2015/06/01/ipv6-como-activarlo-o-desactivarlo/
+-------------------------
+Desactivar
+---------
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+
+activar
+---------
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
+
+https://stackoverflow.com/questions/64177422/unable-to-produce-to-kafka-topic-that-is-running-on-wsl-2-from-windows
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+<!-- ====================================================================== -->
+<!-- PARENT                                                                 -->
+<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud</groupId>
+		<artifactId>r01fCloud</artifactId>
+		<version>${revision}</version>
+	</parent>
+<!-- ====================================================================== -->
+<!-- ARTIFACT                                                               -->
+<!-- ====================================================================== -->
+	<groupId>r01.fabric.coreservices.cloud.aws</groupId>
+	<name>r01fAWS</name>
+	<artifactId>r01fAWS</artifactId>
+	<packaging>pom</packaging>				<!-- it's a parent project -->
+
+<!-- ====================================================================== -->
+<!-- MODULES                                                                -->
+<!-- ====================================================================== -->
+	<modules>
+		<module>r01fAWSClasses</module>
+		<module>r01fAWSS3</module>
+		<module>r01fAWSSES</module>
+		<module>r01fAWSSNS</module>
+  	</modules>
+
+<!-- ====================================================================== -->
+<!-- AWS SDK 2.0 BOM                                                        -->
+<!-- ====================================================================== -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<!-- Last known version <version>2.18.25</version> -->
+				<!--<version>2.31.11</version>--> <!-- Delete objects cause error Missing required header for this request: Content-Md5 -->
+				<version>2.42.38</version>	<!-- previously 2.28.21 -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>			
+		</dependencies>
+	</dependencyManagement>
+	
+
+</project>

@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+<!-- ====================================================================== -->
+<!-- PARENT																 -->
+<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud.aws.s3</groupId>
+		<artifactId>r01fAWSS3</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+<!-- ====================================================================== -->
+<!-- ARTIFACT															   -->
+<!-- ====================================================================== -->
+	<name>r01fAWSS3Classes</name>
+	<artifactId>r01fAWSS3Classes</artifactId>
+
+<!-- ====================================================================== -->
+<!-- DEPENDENCIES														   -->
+<!-- ====================================================================== -->
+	<dependencyManagement>
+		<!-- Reference to the parent project where the AWS POM is defined -->
+		<dependencies>
+			<dependency>
+				<groupId>r01.fabric.coreservices.cloud.aws</groupId>
+				<artifactId>r01fAWS</artifactId>
+				<version>${revision}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<!-- ///////////////////////////////////////// -->
+		<!--  Base Classes							   -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fBaseClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+
+		<!-- ///////////////////////////////////////// -->
+		<!--  Base Cloud & Core						   -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws</groupId>
+			<artifactId>r01fAWSClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+		<!-- ///////////////////////////////////////// -->
+		<!-- IO Classes								-->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fIOClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+
+		<!-- ///////////////////////////////////////// -->
+		<!-- Mime Types							-->
+		<!-- /////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fMimeClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+
+		<!-- ///////////////////////////////////////// -->
+		<!--  Amazon S3 Client Classes				 -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>s3</artifactId>
+			<exclusions> <!-- Note  1.11.442:  Be Careful with Jackson libraries!!! . Amazon S3 works  with 2.6.7 and R01FB with 2.9!!!!   -->
+				<exclusion>
+			 		<groupId>com.fasterxml.jackson.core</groupId>
+			 		<artifactId>*</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.dataformat</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>apache-client</artifactId>
+		</dependency>
+		<dependency>
+		        <groupId>software.amazon.awssdk</groupId>
+		        <artifactId>s3-transfer-manager</artifactId>
+		</dependency>
+	</dependencies>
+
+<!-- ====================================================================== -->
+<!-- BUILD																	-->
+<!-- ====================================================================== -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!--
+				ECLIPSE (see main pom.xml for further info) ===================
+				This plugin has NO effects in maven build:
+					m2e ONLY runs some 'standard' goals of the maven pom.xml since the aim of m2e is NOT to be a complete CI tool
+					... in order to include 'non-standard' goals in m2e execution and avoid [plugin execution not covered by the eclipse m2e plugin project build lifecycle mapping]
+						the 'non-standard' plugin MUST be explicitly included in m2e execution
+				-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- flatten plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>flatten-maven-plugin</artifactId>
+										<versionRange>[1.1.0,)</versionRange>
+										<goals>
+											<goal>flatten</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

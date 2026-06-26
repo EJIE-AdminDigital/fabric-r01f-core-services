@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moduleConfigForS3>
+    <moduleConfigForBucket>
+		<defaultBucket>80-des-b572c67447a4a6905afcad0f316d43ac</defaultBucket>
+	</moduleConfigForBucket>
+	<s3ClientConfig>
+		<aws>
+			<s3>
+			    <httpSettings disableCertChecking='true' />
+				<endPoint>http://s3.sva.itbatera.ejgv.eus</endPoint>
+				<accessKey>V8HP2MUZXURPZFFC01GX</accessKey>
+				<accessSecret>8feCx8SjCIXIxVBI3szD6Kaq8pquHyPaLTkrAoxe</accessSecret>
+			</s3>
+		</aws>
+	</s3ClientConfig>
+</moduleConfigForS3>

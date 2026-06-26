@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moduleConfigForS3>
+    <moduleConfigForBucket>
+		<defaultBucket>02-des-1e5b28d71b22b0d09c5220a2b24bcb49</defaultBucket>
+	</moduleConfigForBucket>
+	<s3ClientConfig>
+		<aws>
+			<s3>
+			    <httpSettings disableCertChecking='true' />
+				<endPoint>http://s3.itbatera.euskadi.eus</endPoint>
+				<accessKey>6VPW0XG22OBYLSV0LWCK</accessKey>
+				<accessSecret>Tnn6nzTQU7VdOI7Re/TyjsFDiwZqB2zIYgSaMjs0</accessSecret>
+			</s3>
+		</aws>
+	</s3ClientConfig>
+</moduleConfigForS3>

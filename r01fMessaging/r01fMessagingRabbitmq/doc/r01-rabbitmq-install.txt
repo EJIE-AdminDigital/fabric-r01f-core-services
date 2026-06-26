@@ -1,0 +1,46 @@
+RABBIT SETUP STEPS
+======================
+
+0 .Install Elrlang:´
+________________________________________________________________________________________________________
+
+0.1 Download
+
+(    at this time no portable installable has been found....)
+      https://erlang.org/download/otp_versions_tree.html
+      https://github.com/erlang/otp/releases/tag/OTP-25.0.4
+
+0.2 Set ERLANG HOME  windows varibes
+
+     C:\develop\erlang\Erlang OTP\bin\erl.exe
+
+0.3. Check
+
+	ERLANG_HOME = C:\develop\erlang\Erlang OTP\  [ don't include bin dir & exe ]
+	Check  -> ECHO %ERLANG_HOME% 
+
+1. Install RabbitMQ
+________________________________________________________________________________________________________
+ 
+1.0 . Download last PORTABLE version 
+
+	https://www.rabbitmq.com/install-windows-manual.html#:~:text=Install%20Erlang%2FOTP,Erlang%2FOTP%20Version%20Tree%20page.&text=Important%3A%20your%20system%20should%20only,the%20Windows%2Dspecific%20Issues%20page.
+
+
+1.0  Uncompress: C:\develop\servers\rabbitmq_server-3.10.7\
+
+1.2  Goto location: C:\develop\servers\rabbitmq_server-3.10.7\sbin>
+           
+           rabbitmq-plugins enable rabbitmq_management   ( https://www.rabbitmq.com/management.html)
+           rabbitmq-server.bat
+
+ ADMIN   -----> http://localhost:15672/  
+
+	 Add user [ running rabbit... must be started , so open a new window o run rabbit on background/detached ] :
+
+                   rabbitmqctl add_user root root
+                   rabbitmqctl set_user_tags root administrator
+ BROKER : 127.0.0.1 5672  [ guest / guest ]
+
+
+

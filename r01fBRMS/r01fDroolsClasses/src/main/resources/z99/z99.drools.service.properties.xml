@@ -1,0 +1,7 @@
+<drools>
+ <!-- Rules -->	
+  <rules>
+  	<rule>r01f/brms/drools/sample/rules/rules.drl</rule>  
+  </rules>
+</drools>
+

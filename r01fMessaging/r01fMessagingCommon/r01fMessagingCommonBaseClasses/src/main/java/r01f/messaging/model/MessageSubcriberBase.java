@@ -1,0 +1,12 @@
+package r01f.messaging.model;
+
+public abstract class MessageSubcriberBase
+ 		   implements MessageSubcriber {
+/////////////////////////////////////////////////////////////////////////////////////////
+//	CONSTRUCTOR
+/////////////////////////////////////////////////////////////////////////////////////////	
+	@Override @SuppressWarnings("unchecked")
+	public <S extends MessageSubcriber> S as(final Class<S> type) {
+		return (S) this;
+	}
+}

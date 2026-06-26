@@ -1,0 +1,30 @@
+package r01f.brms.drools.sample.rules;
+
+import r01f.brms.drools.sample.InboundInput;
+import r01f.brms.drools.sample.OutboundSuggest;
+
+
+global r01f.brms.drools.sample.OutboundSuggest suggest;
+
+rule "First question"
+    when
+		InboundInput(text != null)
+    then
+         suggest.setText("Ayudas | Cita  | Pagos | Consulta");       
+end
+
+rule "Ayudas"
+    when
+        InboundInput(text == "Ayudas")
+    then
+       suggest.setText("https://www.euskadi.eus/ayuda_subvencion/2020/irakasle_birkokatzea/web01-tramite/es/");  
+end
+
+rule "Cita"
+    when
+        InboundInput(text == "Cita")
+    then
+       suggest.setText("https://www.euskadi.eus/web01-ejqmatic/es/zuzeneanwebbooking/#/preselect/services/4e32f48ac71d930bc3a94c121b2e7f70c51e7334641c37a75ca83489af89b8b1?lang=es_es");  
+end
+
+

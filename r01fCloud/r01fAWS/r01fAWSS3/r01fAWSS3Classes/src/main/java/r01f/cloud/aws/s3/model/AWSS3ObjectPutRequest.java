@@ -23,37 +23,41 @@ public class AWSS3ObjectPutRequest
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectPutRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
                                  final InputStream streamToUpload,
                                  final MimeType contentType,
                                  final AWSS3ObjectMetaDataItem... customMetadata ) {
-		this(bucket,key,streamToUpload,Lists.newArrayList(customMetadata),contentType);
+		this(bucket,key,
+			 streamToUpload,
+			 Lists.newArrayList(customMetadata),contentType);
 	}
-	public AWSS3ObjectPutRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
                                  final InputStream streamToUpload,
                                  final AWSS3ObjectMetaDataItem... customMetadata ) {
-		this(bucket,key,streamToUpload, Lists.newArrayList(customMetadata));
+		this(bucket,key,
+			 streamToUpload, 
+			 Lists.newArrayList(customMetadata));
 	}
-	public AWSS3ObjectPutRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 						         final InputStream streamToUpload) {
 		super(bucket,key);
 		_streamToUpload = streamToUpload;
 	}
-	public AWSS3ObjectPutRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 						         final InputStream streamToUpload,
 						         final MimeType contentType) {
 		super(bucket,key);
 		_streamToUpload = streamToUpload;
 		_contentType = contentType;
 	}
-	public AWSS3ObjectPutRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 			                     final InputStream streamToUpload,
 			                     final Collection<AWSS3ObjectMetaDataItem> customMetadata) {
 		super(bucket,key);
 		_streamToUpload = streamToUpload;
 		_customMetadata = customMetadata;
 	}
-	public AWSS3ObjectPutRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 			                     final InputStream streamToUpload,
 			                     final Collection<AWSS3ObjectMetaDataItem> customMetadata,
 			                     final MimeType contentType) {

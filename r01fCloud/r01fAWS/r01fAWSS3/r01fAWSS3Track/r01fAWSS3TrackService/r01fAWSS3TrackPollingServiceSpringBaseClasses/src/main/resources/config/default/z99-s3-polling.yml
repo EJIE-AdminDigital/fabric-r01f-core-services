@@ -1,0 +1,6 @@
+s3-polling:
+  bucket: "dena"
+  fixed-delay-ms: 6000
+  data-paths:
+    - "ejgv/osasun/type1"
+

@@ -25,7 +25,6 @@
 <!-- MODULES                                                                -->
 <!-- ====================================================================== -->
 	<modules>
-		<module>r01fBatchModelClasses</module>
 		<module>r01fBatchCoreClasses</module>
 		<module>r01fBatchCoreExportImportClasses</module>
 	</modules>

@@ -2,7 +2,8 @@ package r01.kv.config;
 
 
 import r01f.config.ContainsConfigData;
-import r01f.services.ids.ServiceIDs.CoreAppCode;
+import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.guids.CommonOIDs.IsAppComponent;
 import r01f.services.ids.ServiceIDs.CoreModule;
 
 /**
@@ -19,11 +20,11 @@ public interface KVModuleConfig
 	/**
 	 * @return the app code
 	 */
-	public CoreAppCode getAppCode();
+	public IsAppCode getAppCode();
 	/**
 	 * @return the app module
 	 */
-	public CoreModule getAppModule();
+	public IsAppComponent getAppModule();
 /////////////////////////////////////////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////////////////////////////////////////

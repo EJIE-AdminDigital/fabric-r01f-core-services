@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import r01f.guids.OIDBaseImmutable;
+import r01f.guids.OIDTyped;
 import r01f.httpclient.HttpClientProxySettings;
 import r01f.objectstreamer.annotations.MarshallType;
 import r01f.securitycontext.SecurityIDS.Password;
@@ -150,14 +150,31 @@ public class TwilioService
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 	@MarshallType(as="twilioAPIClientID")
-	public static class TwilioAPIClientID
-				extends OIDBaseImmutable<String> {
-		private static final long serialVersionUID = -5867457273405673410L;
-		private TwilioAPIClientID(final String id) {
-			super(id);
+	public record TwilioAPIClientID(@Getter String id)
+	   implements OIDTyped<String> {
+		public static TwilioAPIClientID from(final String id) {
+			return new TwilioAPIClientID(id);
+		}
+		public static TwilioAPIClientID forId(final String id) {
+			return new TwilioAPIClientID(id);
+		}
+		public static TwilioAPIClientID valueOf(final String id) {
+			return new TwilioAPIClientID(id);
+		}
+		public static TwilioAPIClientID fromString(final String id) {
+			return new TwilioAPIClientID(id);
 		}
 		public static TwilioAPIClientID of(final String id) {
 			return new TwilioAPIClientID(id);
+		}
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
 		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////

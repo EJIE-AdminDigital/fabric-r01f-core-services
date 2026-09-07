@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- PARENT                                                                 -->
+	<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud.aws.s3</groupId>
+		<artifactId>r01fAWSS3</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<!-- ====================================================================== -->
+	<!-- ARTIFACT                                                               -->
+	<!-- ====================================================================== -->
+	<name>r01fAWSS3SpringClasses</name>
+	<artifactId>r01fAWSS3SpringClasses</artifactId>
+	<!-- ====================================================================== -->
+	<!-- DEPENDENCIES                                                           -->
+	<!-- ====================================================================== -->
+	<dependencies>
+		<!-- ///////////////////////////////////////// -->
+		<!--  Base Classes                             -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3</groupId>
+			<artifactId>r01fAWSS3Classes</artifactId>
+			<version>${revision}</version>
+		</dependency>
+	    <!-- ///////////////////////////////////////// -->
+		<!-- Guice                                     -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base.di</groupId>
+			<artifactId>r01fDIGuiceClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>

@@ -1,0 +1,14 @@
+package r01f.cloud.aws.s3.events.http;
+
+import java.util.Properties;
+
+import r01f.cloud.aws.s3.events.AWSS3EventServiceConfig;
+
+
+public interface AWSS3HttpEventServiceConfig
+		 extends AWSS3EventServiceConfig {
+/////////////////////////////////////////////////////////////////////////////////////////
+//	
+/////////////////////////////////////////////////////////////////////////////////////////	
+	public Properties asProperties();
+}

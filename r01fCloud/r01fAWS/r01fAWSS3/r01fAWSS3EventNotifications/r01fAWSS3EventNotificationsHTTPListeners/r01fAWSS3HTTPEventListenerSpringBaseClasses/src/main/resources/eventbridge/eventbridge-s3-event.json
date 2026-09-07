@@ -1,0 +1,27 @@
+{
+  "version": "0",
+  "id": "fe8d3e42-1234-5678-abcd-1234567890ab",
+  "detail-type": "Object Created",
+  "source": "aws.s3",
+  "account": "123456789012",
+  "time": "2026-08-30T12:00:00Z",
+  "region": "eu-west-1",
+  "resources": [
+    "arn:aws:s3:::my-test-bucket"
+  ],
+  "detail": {
+    "version": "0",
+    "bucket": {
+      "name": "demo"
+    },
+    "object": {
+      "key": "AeroFlightTicktes.pdf",
+      "size": 2048,
+      "etag": "b10a8db164e0754105b7a99be72e3fe5",
+      "sequencer": "0055D91B28B512A292"
+    },
+    "request-id": "C3D13FE58D2181B0",
+    "requester": "123456789012",
+    "reason": "PutObject"
+  }
+}

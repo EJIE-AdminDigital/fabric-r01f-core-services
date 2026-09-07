@@ -2,7 +2,7 @@ package r01f.cloud.aws.s3.client.api.delegates;
 
 import r01f.cloud.aws.s3.api.interfaces.AWSS3ServicesForBuckets;
 import r01f.cloud.aws.s3.api.interfaces.impl.AWSS3ServicesForBucketsImpl;
-import r01f.cloud.aws.s3.model.AWSS3Bucket;
+import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import software.amazon.awssdk.services.s3.S3Client;
 
 public class AWSS3ClientAPIDelegateForBuckets
@@ -21,15 +21,15 @@ public class AWSS3ClientAPIDelegateForBuckets
 //	
 /////////////////////////////////////////////////////////////////////////////////////////	
 	@Override
-	public void createBucket(final AWSS3Bucket bucket) {
+	public void createBucket(final AWSS3BucketID bucket) {
 		_serviceForBucketsImpl.createBucket(bucket);
 	}
 	@Override
-	public void deleteBucket(final AWSS3Bucket bucket) {
+	public void deleteBucket(final AWSS3BucketID bucket) {
 		_serviceForBucketsImpl.deleteBucket(bucket);
 	}
 	@Override
-	public boolean existBucket(final AWSS3Bucket bucket) {
+	public boolean existBucket(final AWSS3BucketID bucket) {
 		return _serviceForBucketsImpl.existBucket(bucket);
 	}
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+<!-- ====================================================================== -->
+<!-- PARENT                                                                 -->
+<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud.aws.s3.track</groupId>
+		<artifactId>r01fAWSS3Track</artifactId>
+		<version>${revision}</version>
+	</parent>
+<!-- ====================================================================== -->
+<!-- ARTIFACT                                                               -->
+<!-- ====================================================================== -->
+
+	<name>r01fAWSS3TrackService</name>
+	<artifactId>r01fAWSS3TrackService</artifactId>
+	<packaging>pom</packaging>				<!-- it's a parent project -->
+
+<!-- ====================================================================== -->
+<!-- MODULES                                                                -->
+<!-- ====================================================================== -->
+	<modules>
+		<module>r01fAWSS3TrackPollingServiceSpringBaseClasses</module>		
+	</modules>
+<!-- ====================================================================== -->
+<!-- DEPENDENCIES                                                           -->
+<!-- ====================================================================== -->
+	<dependencies>
+
+	</dependencies>
+</project>

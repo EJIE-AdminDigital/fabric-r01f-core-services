@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- PARENT                                                                 -->
+	<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud.aws.s3.track</groupId>
+		<artifactId>r01fAWSS3TrackService</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<!-- ====================================================================== -->
+	<!-- ARTIFACT                                                               -->
+	<!-- ====================================================================== -->
+	<name>r01fAWSS3TrackPollingServiceSpringBaseClasses</name>
+	<artifactId>r01fAWSS3TrackPollingServiceSpringBaseClasses</artifactId>
+
+	<!-- ====================================================================== -->
+	<!-- DEPENDENCIES                                                           -->
+	<!-- ====================================================================== -->
+	<dependencies>
+
+	 <!-- ///////////////////////////////////////// -->
+	 <!--                                           -->
+	 <!-- ///////////////////////////////////////// -->
+
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3</groupId>
+			<artifactId>r01fAWSS3SpringClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+	 	<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3.events</groupId>
+			<artifactId>r01fAWSS3EventNotificationsCommonClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+        <dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3.events</groupId>
+			<artifactId>r01fAWSS3EventNotificationsHTTPClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3.track</groupId>
+			<artifactId>r01fAWSS3TrackClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3.events.kafka</groupId>
+			<artifactId>r01fAWSS3KafkaEventListenerSpringBaseClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>r01.fabric.base.spring.boot</groupId>
+			<artifactId>r01fSpringBootStarterWebClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>r01.fabric.base.objectstreamer</groupId>
+			<artifactId>r01fObjectStreamerClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

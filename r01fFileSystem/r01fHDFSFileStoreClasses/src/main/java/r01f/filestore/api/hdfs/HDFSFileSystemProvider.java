@@ -1,7 +1,7 @@
 package r01f.filestore.api.hdfs;
 
 import java.io.IOException;
-import java.util.Date;
+import java.time.Instant;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -76,7 +76,7 @@ class HDFSFileSystemProvider {
 		_fs = FileSystem.get(_hdfsConf);
 
 		// store the credentials
-		_lastCredentialsRefreshTimeStamp = new Date().getTime();
+		_lastCredentialsRefreshTimeStamp = Instant.now().toEpochMilli();
 	}
 	private void _refreshCredentialsIfExpired() throws IOException {
 		log.trace("[hdfs filesystem provider] The credentials refresh period in milis is: {}", _credentialsRefreshPeriodMilis);
@@ -90,7 +90,7 @@ class HDFSFileSystemProvider {
 			return;
 		}
 		// check if the timelapse is over
-		long currTimeStamp = new Date().getTime();
+		long currTimeStamp = Instant.now().toEpochMilli();
 		long elapsed = currTimeStamp - _lastCredentialsRefreshTimeStamp;
 		if (elapsed > _credentialsRefreshPeriodMilis) {
 			log.info("[hdfs filesystem provider] The credentials WILL be refreshed since the refresh period ({} milis) is over",

@@ -2,7 +2,7 @@ package r01f.core.batch;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Date;
+import java.time.Instant;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
@@ -14,33 +14,30 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import r01f.patterns.ProgressSubscriber;
 import r01f.securitycontext.SecurityContext;
+import r01f.types.jobs.ItemsProcessingProgress;
 
 @Slf4j
-public abstract class ItemFlowProcessorBase<T,P extends ItemFlowProcessingProgress> {
+public abstract class ItemFlowProcessorBase<T> {
 /////////////////////////////////////////////////////////////////////////////////////////
 //	FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
 	private final ExecutorService _executorService;
 
 	private final OutputStream _outputStream;
-
-	private final ItemFlowProcessingProgressFactory<T,P> _itemFlowProcessingProgressFactory;
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
 	public ItemFlowProcessorBase(final ExecutorService executorService,
-								 final OutputStream outputStream,
-								 final ItemFlowProcessingProgressFactory<T,P> itemFlowProcessingProgressFactory) {
+								 final OutputStream outputStream) {
 		_executorService = executorService;
 		_outputStream = outputStream;
-		_itemFlowProcessingProgressFactory = itemFlowProcessingProgressFactory;
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //	PUBLIC METHODS
 /////////////////////////////////////////////////////////////////////////////////////////
 	public void process(final SecurityContext securityContext,
 						final long totalItemsToBeProcessed,final Flowable<T> items,
-						final ProgressSubscriber<P> progressSubscriber) {
+						final ProgressSubscriber<ItemsProcessingProgress> progressSubscriber) {
 
 		try {
 
@@ -50,7 +47,7 @@ public abstract class ItemFlowProcessorBase<T,P extends ItemFlowProcessingProgre
 				  _outputStream);
 
 			// [2] - consume the flowable
-			Date startedAt = new Date();
+			Instant startedAt = Instant.now();
 			AtomicLong currItem = new AtomicLong(1);
 
 			// See https://dzone.com/articles/rxjava-idiomatic-concurrency-flatmap-vs-parallel
@@ -86,13 +83,13 @@ public abstract class ItemFlowProcessorBase<T,P extends ItemFlowProcessingProgre
 										// a) process item
 									  	//    BEWARE! synchronize while writing
 								  		_processItem(securityContext,
-								  				   item);
+								  				     item);
 
 										// b) tell the subscriber about the progress
 										long i = currItem.getAndIncrement();
-										progressSubscriber.onNext(_itemFlowProcessingProgressFactory.createFor(startedAt,
-																								 			   totalItemsToBeProcessed,i,
-																								 			   item));
+										progressSubscriber.onNext(new ItemsProcessingProgress(startedAt,
+																							  totalItemsToBeProcessed,
+																							  i));
 						 		   },
 								   // error consumer
 								   progressSubscriber::onError)
@@ -169,7 +166,7 @@ public abstract class ItemFlowProcessorBase<T,P extends ItemFlowProcessingProgre
 		public abstract void throwingAccept(final T item) throws Throwable;
 
 		public static <T> ItemThrowingConsumer<T> wrap(final io.reactivex.rxjava3.functions.Consumer<T> throwingConsummer,
-																 final Consumer<Throwable> onErrorConsumer) {
+													   final Consumer<Throwable> onErrorConsumer) {
 			return new ItemThrowingConsumer<T>(onErrorConsumer) {
 							@Override
 							public void throwingAccept(final T item) throws Throwable {

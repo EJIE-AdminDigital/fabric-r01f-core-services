@@ -1,9 +1,9 @@
 package r01f.messaging.rabbitmq;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import r01f.annotations.Immutable;
-import r01f.guids.OIDBaseMutable;
 import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
 
@@ -12,23 +12,9 @@ public abstract class RabbitMQIds {
 /////////////////////////////////////////////////////////////////////////////////////////
 //	BASE
 /////////////////////////////////////////////////////////////////////////////////////////
-	public static interface RabbitMQModelObjecID
-					 extends OIDTyped<String> {
+	public static interface RabbitMQObjecID
+					extends OIDTyped<String> {
 		// just a marker interface
-	}
-	/**
-	 * Base for every RABBIT ID's
-	 */
-	@Immutable
-	@NoArgsConstructor
-	public static abstract class RabbitMQModelObjecIDBase
-						 extends OIDBaseMutable<String>
-					  implements RabbitMQModelObjecID {
-		private static final long serialVersionUID = 4162366466990455545L;
-
-		public RabbitMQModelObjecIDBase(final String id) {
-			super(id);
-		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //	 RabbitMQChannel
@@ -38,12 +24,11 @@ public abstract class RabbitMQIds {
 	 */
 	@Immutable
 	@MarshallType(as="rabbitMQChannelID")
-	@NoArgsConstructor
-	public static final class RabbitMQChannel
-					  extends RabbitMQModelObjecIDBase {
-		private static final long serialVersionUID = -6110073635719213157L;
-		public RabbitMQChannel(final String oid) {
-			super(oid);
+	public record RabbitMQChannel(@Getter String id)
+	   implements RabbitMQObjecID {
+		
+		public static RabbitMQChannel from(final String id) {
+			return new RabbitMQChannel(id);
 		}
 		public static RabbitMQChannel forId(final String id) {
 			return new RabbitMQChannel(id);
@@ -51,24 +36,32 @@ public abstract class RabbitMQIds {
 		public static RabbitMQChannel valueOf(final String str) {
 			return new RabbitMQChannel(str);
 		}
+		public static RabbitMQChannel fromString(final String id) {
+			return new RabbitMQChannel(id);
+		}
 
 		// Default channel existes for RabbitMQ named "" (empty string)
 		public static final RabbitMQChannel DEFAULT = RabbitMQChannel.forId("");
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
+		}
 	}
-
-
 	/**
 	 * RabbitMQChannel
 	 */
 	@Immutable
 	@MarshallType(as="rabbitMQQueue")
-	@NoArgsConstructor
-	public static final class RabbitMQQueue
-					  extends RabbitMQModelObjecIDBase {
+	public record RabbitMQQueue(@Getter String id)
+	   implements RabbitMQObjecID {
 
-		private static final long serialVersionUID = -6110073635719213157L;
-		public RabbitMQQueue(final String oid) {
-			super(oid);
+		public static RabbitMQQueue from(final String id) {
+			return new RabbitMQQueue(id);
 		}
 		public static RabbitMQQueue forId(final String id) {
 			return new RabbitMQQueue(id);
@@ -76,9 +69,18 @@ public abstract class RabbitMQIds {
 		public static RabbitMQQueue valueOf(final String str) {
 			return new RabbitMQQueue(str);
 		}
+		public static RabbitMQQueue fromString(final String id) {
+			return new RabbitMQQueue(id);
+		}
 		public static final RabbitMQQueue DEFAULT = RabbitMQQueue.forId("default");
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
+		}
 	}
-
-
-
 }

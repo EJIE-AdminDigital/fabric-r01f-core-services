@@ -3,7 +3,8 @@
  */
 package r01f.scheduler.aboutschedulableobj;
 
-import java.util.Date;
+
+import java.time.Instant;
 
 import org.quartz.CronExpression;
 import org.quartz.Job;
@@ -57,7 +58,7 @@ public interface QuartzSchedulerWrapperAboutSchedulableObject<O extends CanBeSch
 	 */
 	public <J extends Job> boolean scheduleJobAboutObject(final O oid,
 														  final Class<J> jobType,
-										  				  final Date startDate,
+										  				  final Instant startDate,
 										  				  final int repetitions,TimeLapse intervalWithinRepetitions) throws SchedulerException;
 	/**
 	 * Removes an scheduled schedulable object

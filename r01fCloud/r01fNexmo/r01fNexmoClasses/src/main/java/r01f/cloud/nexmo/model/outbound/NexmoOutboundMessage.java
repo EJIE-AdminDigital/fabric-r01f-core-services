@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import r01f.aspects.interfaces.dirtytrack.ConvertToDirtyStateTrackable;
 import r01f.cloud.nexmo.model.Message;
-import r01f.cloud.nexmo.model.NexmoIDS.MessageUUID;
+import r01f.cloud.nexmo.model.NexmoIDS.NexmoMessageUUID;
 import r01f.cloud.nexmo.model.Peer;
 import r01f.objectstreamer.annotations.MarshallField;
 import r01f.objectstreamer.annotations.MarshallType;
@@ -35,7 +35,7 @@ import r01f.objectstreamer.annotations.MarshallType;
 public class NexmoOutboundMessage {
 	
 	@MarshallField(as="uuid")
-	@Getter @Setter private MessageUUID _uuid;
+	@Getter @Setter private NexmoMessageUUID _uuid;
 	
 	@MarshallField(as="from")
 	@Getter @Setter private Peer _from;

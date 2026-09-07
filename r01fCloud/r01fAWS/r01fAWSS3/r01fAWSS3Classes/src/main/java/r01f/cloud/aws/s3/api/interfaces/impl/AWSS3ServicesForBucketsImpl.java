@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import lombok.extern.slf4j.Slf4j;
 import r01f.cloud.aws.s3.api.interfaces.AWSS3ServicesForBuckets;
-import r01f.cloud.aws.s3.model.AWSS3Bucket;
+import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.util.types.collections.CollectionUtils;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.Bucket;
@@ -27,7 +27,7 @@ public class AWSS3ServicesForBucketsImpl
 //  CREATE / DELETE BUCKET
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean existBucket(final AWSS3Bucket bucket) {
+	public boolean existBucket(final AWSS3BucketID bucket) {
 		log.warn("existBucket  bucket {}?",
 				 bucket);
 		ListBucketsRequest req = ListBucketsRequest.builder()
@@ -46,7 +46,7 @@ public class AWSS3ServicesForBucketsImpl
 		return exists;
 	}
 	@Override
-	public void createBucket(final AWSS3Bucket bucket) {
+	public void createBucket(final AWSS3BucketID bucket) {
 		log.warn("Create  bucket {}",
 				 bucket);
 		CreateBucketRequest req = CreateBucketRequest.builder()
@@ -55,7 +55,7 @@ public class AWSS3ServicesForBucketsImpl
 		_s3Client.createBucket(req);
 	}
 	@Override
-	public void deleteBucket(final AWSS3Bucket bucketName) {
+	public void deleteBucket(final AWSS3BucketID bucketName) {
 		log.warn("Delete  bucket {}",
 				 bucketName);
 		DeleteBucketRequest req = DeleteBucketRequest.builder()

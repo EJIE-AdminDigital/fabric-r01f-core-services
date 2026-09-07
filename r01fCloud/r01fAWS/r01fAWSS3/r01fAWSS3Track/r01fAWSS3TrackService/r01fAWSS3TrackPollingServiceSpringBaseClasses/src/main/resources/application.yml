@@ -1,0 +1,21 @@
+# application.yml (Defaults Generales y Importación)
+
+# === Configuración Base ===
+app:
+  name: My-Service-Core
+  version: 1.0.0
+
+server:
+  port: 8089 # Puerto por defecto
+logging:
+    level:
+      root: INFO
+      org.hibernate.jpa.internal.util.LogHelper: INFO
+# === Importar Módulos ===
+spring:
+  config:
+    import:
+      # Import db 
+      - classpath:config/default/z99-s3.yml   
+      - classpath:config/default/z99-s3-polling.yml   
+      - optional:classpath:config/${spring.profiles.active}/database.yml

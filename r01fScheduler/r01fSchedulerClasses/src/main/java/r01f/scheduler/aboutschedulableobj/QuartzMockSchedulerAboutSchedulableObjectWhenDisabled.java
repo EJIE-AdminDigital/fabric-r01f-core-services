@@ -1,6 +1,7 @@
 package r01f.scheduler.aboutschedulableobj;
 
-import java.util.Date;
+
+import java.time.Instant;
 
 import org.quartz.CronExpression;
 import org.quartz.Job;
@@ -44,7 +45,7 @@ public abstract class QuartzMockSchedulerAboutSchedulableObjectWhenDisabled<O ex
 	@Override
 	public <J extends Job> boolean scheduleJobAboutObject(final O oid, 
 														  final Class<J> jobType,
-														  final Date startDate,
+														  final Instant startDate,
 														  final int repetitions,final TimeLapse intervalWithinRepetitions) {
 		log.warn("scheduler is DISABLED, check properties file!");
 		return true;
@@ -53,7 +54,7 @@ public abstract class QuartzMockSchedulerAboutSchedulableObjectWhenDisabled<O ex
 //  
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public <J extends Job> boolean removeScheduledJobsAbout(final O oid, Class<J> jobType) {
+	public <J extends Job> boolean removeScheduledJobsAbout(final O oid, final Class<J> jobType) {
 		log.warn("scheduler is DISABLED, check properties file!");
 		return true;
 	}

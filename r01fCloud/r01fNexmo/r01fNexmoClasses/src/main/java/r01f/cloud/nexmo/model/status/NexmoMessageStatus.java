@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import r01f.cloud.nexmo.model.MessageError;
 import r01f.cloud.nexmo.model.MessageStatus;
 import r01f.cloud.nexmo.model.MessageUsage;
-import r01f.cloud.nexmo.model.NexmoIDS.MessageUUID;
+import r01f.cloud.nexmo.model.NexmoIDS.NexmoMessageUUID;
 import r01f.cloud.nexmo.model.Peer;
 import r01f.model.ModelObject;
 import r01f.objectstreamer.annotations.MarshallField;
@@ -48,7 +48,7 @@ public class NexmoMessageStatus
 //	FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
 	@MarshallField(as="message_uuid")
-	@Getter @Setter private MessageUUID _uuid;
+	@Getter @Setter private NexmoMessageUUID _uuid;
 	
 	@MarshallField(as="to")
 	@Getter @Setter private Peer _to;

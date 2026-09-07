@@ -11,10 +11,8 @@ import r01f.core.services.notifier.config.NotifierEnums.NotifierImpl;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
 import r01f.core.services.notifier.properties.NotifierPropertiesForPush;
-import r01f.core.services.notifier.properties.NotifierPropertiesForSMS;
 import r01f.guids.CommonOIDs.AppCode;
-import r01f.types.contact.OwnedContactMean;
-import r01f.types.contact.Phone;
+import r01f.guids.CommonOIDs.IsAppCode;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
 @Accessors(prefix="_")
@@ -23,7 +21,7 @@ public abstract class NotifierConfigForPushMessage
 /////////////////////////////////////////////////////////////////////////////////////////
 //	FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
-	@Getter private final AppCode _from;
+	@Getter private final IsAppCode _from;
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +67,7 @@ public abstract class NotifierConfigForPushMessage
 		NotifierPropertiesForPush propsForPush = propertiesConstainer.notifiers().push();
 		
 		AppCode appCode =  propsForPush.from() != null ? propsForPush.from() 
-												    : null;
+												       : null;
 				
 		_from = appCode;
 		

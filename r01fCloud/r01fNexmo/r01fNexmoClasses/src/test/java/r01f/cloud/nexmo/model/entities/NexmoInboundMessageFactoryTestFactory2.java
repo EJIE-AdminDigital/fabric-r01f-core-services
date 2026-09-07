@@ -3,7 +3,7 @@ package r01f.cloud.nexmo.model.entities;
 import r01f.cloud.nexmo.NexmoAPI.MessagingService;
 import r01f.cloud.nexmo.model.Message;
 import r01f.cloud.nexmo.model.MessageContents.TextMessageContent;
-import r01f.cloud.nexmo.model.NexmoIDS.PeerID;
+import r01f.cloud.nexmo.model.NexmoIDS.NexmoPeerID;
 import r01f.cloud.nexmo.model.Peer;
 import r01f.cloud.nexmo.model.inbound.NexmoInboundMessage;
 import r01f.internal.R01FAppCodes;
@@ -22,9 +22,9 @@ public class NexmoInboundMessageFactoryTestFactory2
 	
 	private static NexmoInboundMessage _buildOutboundMessage() {
 		NexmoInboundMessage  outboundMessage  = new NexmoInboundMessage();
-		Peer from = new Peer(MessagingService.whatsapp, Phone.create("14157386170"), PeerID.valueOf("66565665"));
+		Peer from = new Peer(MessagingService.whatsapp, Phone.create("14157386170"), NexmoPeerID.valueOf("66565665"));
 		outboundMessage.setFrom(from);
-		Peer to =  new Peer(MessagingService.whatsapp, Phone.create("34616178858"),PeerID.valueOf("66565665"));
+		Peer to =  new Peer(MessagingService.whatsapp, Phone.create("34616178858"),NexmoPeerID.valueOf("66565665"));
 		outboundMessage.setTo(to);
 		Message message = new Message();
 		TextMessageContent content = new TextMessageContent("Hola Caracola");

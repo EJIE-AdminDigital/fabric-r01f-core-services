@@ -2,7 +2,7 @@ package r01f.core.services.notifier.config;
 
 import lombok.experimental.Accessors;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
-import r01f.guids.CommonOIDs.AppCode;
+import r01f.guids.CommonOIDs.IsAppCode;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
 /**
@@ -15,7 +15,7 @@ public abstract class NotifierAppDependentConfigBase
 //	CONSTRUCTOR
 /////////////////////////////////////////////////////////////////////////////////////////
 	protected NotifierAppDependentConfigBase(final NotifierType type,
-										     final AppCode appCode) {
+										     final IsAppCode appCode) {
 		super(type,
 			  appCode);
 	}

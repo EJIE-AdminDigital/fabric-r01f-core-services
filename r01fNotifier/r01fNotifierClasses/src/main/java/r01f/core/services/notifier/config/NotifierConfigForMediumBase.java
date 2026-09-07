@@ -10,7 +10,7 @@ import r01f.core.services.notifier.config.NotifierConfigProviders.NotifierServic
 import r01f.core.services.notifier.config.NotifierEnums.NotifierImpl;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
-import r01f.guids.CommonOIDs.AppCode;
+import r01f.guids.CommonOIDs.IsAppCode;
 import r01f.internal.R01FAppCodes;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
@@ -74,7 +74,7 @@ abstract class NotifierConfigForMediumBase
 //	CONSTRUCTOR
 /////////////////////////////////////////////////////////////////////////////////////////
 	protected NotifierConfigForMediumBase(final NotifierType type,
-										  final AppCode appCode,
+										  final IsAppCode appCode,
 								 		  final boolean enabled,
 								 		  final NotifierImpl impl,final ContainsConfigData serviceImplConfig,
 								 		  final ContainsConfigData appConfig) {

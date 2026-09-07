@@ -1,24 +1,23 @@
 package r01f.cloud.nexmo;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
-
 import com.nexmo.client.NexmoClient;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
+import r01f.cloud.nexmo.NexmoAPIIDs.NexmoAPIClientID;
+import r01f.cloud.nexmo.NexmoAPIIDs.NexmoApplicationtID;
 import r01f.cloud.nexmo.api.interfaces.NexmoServicesForMessagingApplication;
 import r01f.cloud.nexmo.api.interfaces.NexmoServicesForSMS;
 import r01f.cloud.nexmo.api.interfaces.NexmoServicesForVoice;
 import r01f.cloud.nexmo.api.interfaces.impl.NexmoServicesForMessagingApplicationImpl;
 import r01f.cloud.nexmo.api.interfaces.impl.NexmoServicesForSMSImpl;
 import r01f.cloud.nexmo.api.interfaces.impl.NexmoServicesForVoiceImpl;
-import r01f.guids.OIDBaseImmutable;
 import r01f.model.annotations.ModelObjectsMarshaller;
 import r01f.objectstreamer.Marshaller;
-import r01f.objectstreamer.annotations.MarshallType;
 import r01f.securitycontext.SecurityIDS.Password;
 import r01f.types.contact.Phone;
 import r01f.types.url.Url;
@@ -88,31 +87,6 @@ public class NexmoAPI  {
 		}
 		public boolean canSendMessages() {
 			return _smsPhone != null;
-		}
-	}
-/////////////////////////////////////////////////////////////////////////////////////////
-//
-/////////////////////////////////////////////////////////////////////////////////////////
-	@MarshallType(as="apiClientID")
-	public static class NexmoAPIClientID
-				extends OIDBaseImmutable<String> {
-		private static final long serialVersionUID = -5867457273405673410L;
-		private NexmoAPIClientID(final String id) {
-			super(id);
-		}
-		public static NexmoAPIClientID of(final String id) {
-			return new NexmoAPIClientID(id);
-		}
-	}
-	@MarshallType(as="applicationID")
-	public static class NexmoApplicationtID
-				extends OIDBaseImmutable<String> {
-		private static final long serialVersionUID = -5867457273405673410L;
-		private NexmoApplicationtID(final String id) {
-			super(id);
-		}
-		public static NexmoApplicationtID of(final String id) {
-			return new NexmoApplicationtID(id);
 		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////

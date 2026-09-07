@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- PARENT                                                                 -->
+	<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud.aws.s3.events</groupId>
+		<artifactId>r01fAWSS3EventNotifications</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<!-- ====================================================================== -->
+	<!-- ARTIFACT                                                               -->
+	<!-- ====================================================================== -->
+	<name>r01fAWSS3EventNotificationsCommonClasses</name>
+	<artifactId>r01fAWSS3EventNotificationsCommonClasses</artifactId>
+
+	<!-- ====================================================================== -->
+	<!-- DEPENDENCIES                                                           -->
+	<!-- ====================================================================== -->
+	<dependencies>
+		<!-- ///////////////////////////////////////// -->
+		<!--  Model  Classes                            -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fModelClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+		<!-- ///////////////////////////////////////// -->
+		<!--  Properties  Classes                        -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base.properties</groupId>
+			<artifactId>r01fPropertiesClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+		<!-- ///////////////////////////////////////// -->
+		<!-- Base                                      -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fBaseClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fIOClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fReflectionClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>r01.fabric.businessservices</groupId>
+			<artifactId>r01fBusinessServicesClasses</artifactId>
+			<version>${r01f.businessservices.version}</version>
+		</dependency>
+		<!-- ///////////////////////////////////////// -->
+		<!--  Mime  Classes                            -->
+		<!-- ///////////////////////////////////////// -->
+		<dependency>
+			<groupId>r01.fabric.base</groupId>
+			<artifactId>r01fMimeClasses</artifactId>
+			<version>${r01f.base.version}</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3</groupId>
+			<artifactId>r01fAWSS3Classes</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		
+		
+	</dependencies>
+
+</project>

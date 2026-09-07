@@ -3,9 +3,9 @@ package r01.kv.config;
 import lombok.experimental.Accessors;
 import r01f.cloud.aws.s3.client.api.AWSS3ClientConfig;
 import r01f.config.ContainsConfigData;
+import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.guids.CommonOIDs.IsAppComponent;
 import r01f.objectstreamer.annotations.MarshallType;
-import r01f.services.ids.ServiceIDs.CoreAppCode;
-import r01f.services.ids.ServiceIDs.CoreModule;
 
 
 @MarshallType(as="moduleConfigForS3")
@@ -15,10 +15,10 @@ public class KVModuleConfigBaseForS3
 ////////////////////////////////////////////////////////////////////
 // 	CONSTRUCTOR
 ////////////////////////////////////////////////////////////////////
-	public KVModuleConfigBaseForS3(final CoreAppCode appCode,
-			                       	   final CoreModule appModule,
-			                       	   final KVModuleConfigForBucket moduleConfigForBucket,
-			                       	   final AWSS3ClientConfig clientConfig) {
+	public KVModuleConfigBaseForS3(final IsAppCode appCode,
+			                       final IsAppComponent appModule,
+			                       final KVModuleConfigForBucket moduleConfigForBucket,
+			                       final AWSS3ClientConfig clientConfig) {
 		super(appCode,appModule,
 			  moduleConfigForBucket,
 			  clientConfig);

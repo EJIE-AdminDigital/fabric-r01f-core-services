@@ -2,6 +2,7 @@ package r01f.cloud.aws.s3.api.interfaces.impl;
 
 import static r01f.cloud.aws.s3.model.AWSS3FolderPath.DELIMITER;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ import com.google.common.collect.Lists;
 
 import lombok.extern.slf4j.Slf4j;
 import r01f.cloud.aws.s3.api.interfaces.AWSS3ServicesForFiler;
-import r01f.cloud.aws.s3.model.AWSS3Bucket;
+import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.cloud.aws.s3.model.AWSS3FileFilter;
 import r01f.cloud.aws.s3.model.AWSS3FolderPath;
 import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
@@ -27,6 +28,7 @@ import software.amazon.awssdk.services.s3.model.DeleteObjectsRequest;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
 import software.amazon.awssdk.services.s3.model.HeadObjectResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
+import software.amazon.awssdk.services.s3.model.ListObjectsV2Request.Builder;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.ObjectIdentifier;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
@@ -47,7 +49,7 @@ public class AWSS3ServicesForFilerImpl
 //	METHODS TO IMPLEMENT
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean existsFolder(final AWSS3Bucket bucket,
+	public boolean existsFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath) {
 		log.warn("Check if folder exists bucket/key={}/{}",bucket,folderPath);
 
@@ -95,7 +97,7 @@ public class AWSS3ServicesForFilerImpl
 	 *   > Checks the folder has a physical existence with certain characteristics, the key has the common delimiter, the MimeType must be application/x-directory, it has 0 bytes.
 	 */
 	@Override
-	public boolean existsFolder(final AWSS3Bucket bucket,
+	public boolean existsFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath,
 								final boolean physicallyExistenceCheck)  {
 		log.warn("Check if folder exists bucket/key={}/{}",bucket,folderPath);
@@ -155,7 +157,7 @@ public class AWSS3ServicesForFilerImpl
 		return true;
 	}
 	@Override
-	public boolean hasSubfolder(final AWSS3Bucket bucket,
+	public boolean hasSubfolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath)  {
 		log.warn("Check if folder bucket/key={}/{} has at least one subfolder",bucket,folderPath);
 
@@ -181,7 +183,7 @@ public class AWSS3ServicesForFilerImpl
 //	COPY / MOVE / RENAME
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean copyFolder(final AWSS3Bucket bucket,
+	public boolean copyFolder(final AWSS3BucketID bucket,
 							  final AWSS3FolderPath srcFolderPath,final AWSS3FolderPath dstFolderPath,
 							  final boolean overwrite) {
 		
@@ -212,7 +214,7 @@ public class AWSS3ServicesForFilerImpl
         return true;
 	}
 	@Override
-	public boolean moveFolder(final AWSS3Bucket bucket,
+	public boolean moveFolder(final AWSS3BucketID bucket,
 							  final AWSS3FolderPath srcFolderPath,final AWSS3FolderPath dstFolderPath,
 							  final boolean overwrite)  {
 		// List objects
@@ -254,12 +256,12 @@ public class AWSS3ServicesForFilerImpl
 //	CREATE
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean createFolder(final AWSS3Bucket bucket,
+	public boolean createFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath)  {		
 		return createFolder(bucket,folderPath,MimeTypes.OCTECT_STREAM,false); //for folders application/x-directory is good option 
 	}
 	@Override
-	public boolean createFolder(final AWSS3Bucket bucket,
+	public boolean createFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath,
 								final MimeType contentType,
 								final boolean physicallyExistenceCheck)  {
@@ -286,7 +288,7 @@ public class AWSS3ServicesForFilerImpl
 //	DELETE
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean deleteFolder(final AWSS3Bucket bucket,
+	public boolean deleteFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath) {
 				
 		// List objects, must end the key with delimiter '/' because if not, delete all directories started with the same prefix
@@ -317,7 +319,7 @@ public class AWSS3ServicesForFilerImpl
 //	LIST
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public Collection<AWSS3ObjectSummary> listBucketContents(final AWSS3Bucket bucket,
+	public Collection<AWSS3ObjectSummary> listBucketContents(final AWSS3BucketID bucket,
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive) {
 		return this.listFolderContents(bucket,AWSS3FolderPath.fromString(AWSS3FolderPath.DELIMITER),
@@ -326,7 +328,7 @@ public class AWSS3ServicesForFilerImpl
 									   false);		// do not exclude folders
 	}
 	@Override
-	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3Bucket bucket,
+	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3BucketID bucket,
 															 final AWSS3FolderPath folderPath,
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive,
@@ -374,6 +376,103 @@ public class AWSS3ServicesForFilerImpl
 		}		
 		return results;
 	}
+	
+	
+	/*@Override
+	public Collection<AWSS3ObjectSummary> listModifiedFolderContents(final AWSS3Bucket bucket,
+																	 final AWSS3FolderPath folderPath,
+																	 final Instant modifiedSince) {
+		log.warn("Tracking changes "
+				+ "in bucket '{}' at folder '{}' since {}", bucket, folderPath, modifiedSince);
+		
+		// 1. Request
+		ListObjectsV2Request req = _buildListObjectsRequest(bucket, folderPath);		
+		ListObjectsV2Response listing = _s3Client.listObjectsV2(req);
+		
+		if (!listing.hasContents()) {
+			log.warn(" Nothing found at path {}",folderPath);
+			return Lists.newArrayList();
+		}
+
+		// 2. Filtramos directamente por metadatos (lastModified) en base al timestamp UTC dado
+		Collection<AWSS3ObjectSummary> targetChanges = listing.contents().stream()
+																.filter(s3Obj -> !s3Obj.key().equalsIgnoreCase(folderPath.asString())) // 
+																.filter(s3Obj -> s3Obj.lastModified().isAfter(modifiedSince))         // 
+																.map(s3Obj -> {
+																				AWSS3ObjectSummary item = new AWSS3ObjectSummary();
+																				item.setBucket(bucket);
+																				item.setKey(AWSS3ObjectKey.forId(s3Obj.key()));
+																				item.setFolder(false);
+																				item.setLastModified(s3Obj.lastModified());
+																	
+																	
+																				return item;
+																})
+			.collect(Collectors.toList());
+
+		log.warn("Found {} changes since {} in path {}", targetChanges.size(), modifiedSince, folderPath);
+		return targetChanges;
+	}*/
+	
+	@Override
+	public Collection<AWSS3ObjectSummary> listModifiedFolderContents(final AWSS3BucketID bucket,
+																	 final AWSS3FolderPath folderPath,
+																	 final Instant modifiedSince) {
+		log.warn("Tracking changes in bucket '{}' at folder '{}' since {}", bucket, folderPath, modifiedSince);
+		
+		List<AWSS3ObjectSummary> targetChanges = Lists.newArrayList();
+		String continuationToken = null;
+
+		do {
+			// 1. Build request for the current page
+			ListObjectsV2Request.Builder reqBuilder = _buildListObjectsRequestBuilder(bucket, folderPath);	
+			
+			// Inject token if we are on page 2 or subsequent pages
+			if (continuationToken != null) {
+				reqBuilder.continuationToken(continuationToken);
+			}
+
+			ListObjectsV2Request req = reqBuilder.build();
+			ListObjectsV2Response listing = _s3Client.listObjectsV2(req);
+			
+			if (listing.hasContents()) {
+				// 2. Filter and map the current page contents (up to 1000 items per iteration)
+				List<AWSS3ObjectSummary> pageChanges = 
+						listing.contents().stream()
+								.filter(s3Obj -> !s3Obj.key().equalsIgnoreCase(folderPath.asString()))
+								.filter(s3Obj -> s3Obj.lastModified().isAfter(modifiedSince))
+								.map(s3Obj -> {
+												AWSS3ObjectSummary item = new AWSS3ObjectSummary();
+												item.setBucket(bucket);
+												item.setKey(AWSS3ObjectKey.forId(s3Obj.key()));
+												item.setFolder(false);
+												item.setLastModified(s3Obj.lastModified());
+												return item;
+								})
+						.collect(Collectors.toList());
+
+				targetChanges.addAll(pageChanges);
+			}
+			// 3. Retrieve the next page token
+			continuationToken = listing.nextContinuationToken();
+		} while (continuationToken != null); // Keep pooling if S3 signals more items are available
+
+		if (targetChanges.isEmpty()) {
+			log.warn("Nothing found at path {}", folderPath);
+			return Lists.newArrayList();
+		}
+
+		log.warn("Found {} total changes across all pages since {} in path {}", targetChanges.size(), modifiedSince, folderPath);
+		return targetChanges;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 /////////////////////////////////////////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -383,7 +482,7 @@ public class AWSS3ServicesForFilerImpl
 	 * @param folderPath
 	 * @return
 	 */
-	private static ListObjectsV2Request _buildListObjectsRequest(final AWSS3Bucket bucket,
+	private static ListObjectsV2Request _buildListObjectsRequest(final AWSS3BucketID bucket,
 													    	     final AWSS3FolderPath folderPath) {
 		ListObjectsV2Request req = folderPath.asString()
 										   .equalsIgnoreCase(DELIMITER)
@@ -400,6 +499,28 @@ public class AWSS3ServicesForFilerImpl
 															.build();
 	   return req;
 	}
+	
+	private static Builder _buildListObjectsRequestBuilder(final AWSS3BucketID bucket,
+														   final AWSS3FolderPath folderPath) {
+	       return folderPath.asString()
+									.equalsIgnoreCase(DELIMITER)
+									// Root CASE, that means..bucket level.
+									? ListObjectsV2Request.builder()
+											.bucket(bucket.asString())
+											.delimiter(DELIMITER)
+											
+									// not root
+									: ListObjectsV2Request.builder()
+											.bucket(bucket.asString())
+											.delimiter(DELIMITER)
+											.prefix(folderPath.asString());
+												
+									
+		}
+
+	
+	
+	
 	/**
 	 * From a ObjectListing result, gets the folder objects.
 	 * @param listing
@@ -408,7 +529,7 @@ public class AWSS3ServicesForFilerImpl
 	 * @return
 	 */
 	private static Collection<AWSS3ObjectSummary> _listFolderContentsOfTypeFolder(final ListObjectsV2Response listing,
-																				  final AWSS3Bucket bucket,
+																				  final AWSS3BucketID bucket,
 																				  final AWSS3FolderPath folderPath) {
 		// Filter folder results and its children if requested (recursive)
 		Collection<AWSS3ObjectSummary> folderResults = null;
@@ -434,7 +555,7 @@ public class AWSS3ServicesForFilerImpl
 	 * @return
 	 */
 	private static Collection<AWSS3ObjectSummary> _listFolderContentsOfTypeFile(final ListObjectsV2Response listing,
-																		  		final AWSS3Bucket bucket,
+																		  		final AWSS3BucketID bucket,
 																		  	    final AWSS3FolderPath folderPath) {
 		if (!listing.hasContents()) {
 			return null;

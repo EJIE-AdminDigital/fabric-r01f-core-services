@@ -1,8 +1,8 @@
 package r01f.cloud.aws.s3.model;
 
 import java.nio.charset.Charset;
+import java.time.Instant;
 import java.util.Collection;
-import java.util.Date;
 import java.util.stream.Collectors;
 
 import lombok.AccessLevel;
@@ -26,8 +26,8 @@ public class AWSS3ObjectHeadResult
 	@Getter @Setter private long _contentLength = -1;
 	@Getter @Setter private Charset _charset;
 	@Getter @Setter private MimeType _mimeType;
-	@Getter @Setter private Date _expiresAt;
-	@Getter @Setter private Date _lastModified;
+	@Getter @Setter private Instant _expiresAt;
+	@Getter @Setter private Instant _lastModified;
 	@Getter @Setter private AWSS3ObjectVersionID _versionId;
 	@Getter @Setter private AWSS3ObjectETag _eTag;
 	@Getter @Setter private boolean _deleteMarker;
@@ -35,11 +35,11 @@ public class AWSS3ObjectHeadResult
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectHeadResult(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectHeadResult(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		super(bucket,key,
-			  AWSS3RequestedOperation.HEAD);
+			  AWSS3Operation.HEAD);
 	}
-	public static AWSS3ObjectHeadResultBuilderStep fromHeadResponseOn(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public static AWSS3ObjectHeadResultBuilderStep fromHeadResponseOn(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		AWSS3ObjectHeadResult res = new AWSS3ObjectHeadResult(bucket,key);
 		return res.new AWSS3ObjectHeadResultBuilderStep();
 	}
@@ -56,10 +56,10 @@ public class AWSS3ObjectHeadResult
 		public AWSS3ObjectHeadResult with(final HeadObjectResponse headRes) {
 			_contentLength = headRes.contentLength();
 			if (headRes.expires() != null) {
-				_expiresAt = Date.from(headRes.expires());
+				_expiresAt = headRes.expires();
 			}
 			if (headRes.lastModified() != null) {
-				_lastModified = Date.from(headRes.lastModified());
+				_lastModified = headRes.lastModified();
 			}
 			if (Strings.isNOTNullOrEmpty(headRes.contentType())) {
 				_mimeType = MimeTypes.forName(headRes.contentType());

@@ -3,7 +3,7 @@
  */
 package r01f.scheduler.aboutschedulableobj;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.Properties;
 
 import org.quartz.CronExpression;
@@ -104,7 +104,7 @@ public abstract class QuartzSchedulerWrapperAboutSchedulableObjectBase<O extends
 	@Override
 	public <J extends Job> boolean scheduleJobAboutObject(final O oid,
 														  final Class<J> jobType,
-										  				  final Date startDate,
+										  				  final Instant startDate,
 										  				  final int repetitions,final TimeLapse intervalWithinRepetitions) throws SchedulerException {
 		if (oid == null) throw new IllegalArgumentException("oid is mandatory!");
 		if (jobType == null) throw new IllegalArgumentException("job type is mandatory!");

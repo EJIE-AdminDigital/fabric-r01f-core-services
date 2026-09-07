@@ -18,23 +18,23 @@ public class AWSS3ObjectCopyResult
 //  FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Getter @Setter private AWSS3ObjectVersionID _versionId;
-	@Getter @Setter private AWSS3Bucket _dstBucket;
+	@Getter @Setter private AWSS3BucketID _dstBucket;
 	@Getter @Setter private AWSS3ObjectKey _dstKey;
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectCopyResult(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectCopyResult(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		super(bucket,key,
-			  AWSS3RequestedOperation.COPY);
+			  AWSS3Operation.COPY);
 	}
-	public static AWSS3CopyResultBuilderStep fromCopyObjectResponseOn(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public static AWSS3CopyResultBuilderStep fromCopyObjectResponseOn(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		AWSS3ObjectCopyResult res = new AWSS3ObjectCopyResult(bucket,key);
 		return res.new AWSS3CopyResultBuilderStep();
 	}
 	@NoArgsConstructor(access=AccessLevel.PRIVATE)
 	public class AWSS3CopyResultBuilderStep {
 		
-		public AWSS3ObjectCopyResult to(final CopyObjectResponse copyRes,final AWSS3Bucket destinationBucket,final AWSS3ObjectKey destinationKey) {
+		public AWSS3ObjectCopyResult to(final CopyObjectResponse copyRes,final AWSS3BucketID destinationBucket,final AWSS3ObjectKey destinationKey) {
 			if (Strings.isNOTNullOrEmpty(copyRes.versionId())) _versionId = AWSS3ObjectVersionID.forId(copyRes.versionId());
 			_dstBucket = destinationBucket;
 			_dstKey = destinationKey;

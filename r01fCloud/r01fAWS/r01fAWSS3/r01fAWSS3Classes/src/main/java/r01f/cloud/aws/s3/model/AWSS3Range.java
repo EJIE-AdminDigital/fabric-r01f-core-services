@@ -1,23 +1,33 @@
 package r01f.cloud.aws.s3.model;
 
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 import r01f.annotations.Immutable;
-import r01f.guids.OIDBaseMutable;
+import r01f.guids.OIDTyped;
 
 
 @Immutable
-@NoArgsConstructor
-public class AWSS3Range
-	 extends OIDBaseMutable<String> {
+public record AWSS3Range(@Getter String id)
+   implements OIDTyped<String> {
 
-	private static final long serialVersionUID = 4162366466990455545L;
-/////////////////////////////////////////////////////////////////////////////////////////
-//	
-/////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3Range(final String id) {
-		super(id);
+	public static AWSS3Range from(final String idAsString) {
+		return new AWSS3Range(idAsString);
 	}
 	public static AWSS3Range forId(final String idAsString) {
 		return new AWSS3Range(idAsString);
+	}
+	public static AWSS3Range valueOf(final String idAsString) {
+		return new AWSS3Range(idAsString);
+	}
+	public static AWSS3Range fromString(final String idAsString) {
+		return new AWSS3Range(idAsString);
+	}
+	
+	@Override
+	public String asString() {
+		return this.id;
+	}
+	@Override
+	public String toString() {
+		return this.id;
 	}
 }

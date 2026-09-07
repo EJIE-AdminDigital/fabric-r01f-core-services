@@ -3,8 +3,8 @@
  */
 package r01f.scheduler;
 
+import java.time.Instant;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Properties;
 
 import org.quartz.CronExpression;
@@ -106,7 +106,7 @@ public abstract class QuartzSchedulerWrapperBase
 	}
 	@Override
 	public <J extends Job> boolean scheduleJob(final Class<J> jobType,
-											   final Date startDate,
+											   final Instant startDate,
 							   				   final int repetitions,final TimeLapse intervalWithinRepetitions) throws SchedulerException  {
 		if (startDate == null) throw new IllegalArgumentException("start date is mandatory!!");
 		

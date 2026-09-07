@@ -24,11 +24,11 @@ public class AWSS3ObjectPutResult
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectPutResult(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectPutResult(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		super(bucket,key,
-			  AWSS3RequestedOperation.PUT);
+			  AWSS3Operation.PUT);
 	}
-	public static AWSS3ObjectPutResultBuilderInputStreamStep fromPutObjectResponseOn(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public static AWSS3ObjectPutResultBuilderInputStreamStep fromPutObjectResponseOn(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		AWSS3ObjectPutResult res = new AWSS3ObjectPutResult(bucket,key);
 		return res.new AWSS3ObjectPutResultBuilderInputStreamStep();
 	}

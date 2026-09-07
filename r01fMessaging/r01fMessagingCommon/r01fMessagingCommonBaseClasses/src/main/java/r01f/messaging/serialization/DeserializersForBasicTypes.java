@@ -19,7 +19,7 @@ public class DeserializersForBasicTypes {
 //	Date Deserializer
 /////////////////////////////////////////////////////////////////////////////////////////
 	public static  class DateRequestTypeMapperBase
-		    implements Deserializer<Date> {
+		      implements Deserializer<Date> {
 		@Override
 		public Date deserialize(final byte[] data) {
 			String dateMillisStr = new String(data);
@@ -39,15 +39,15 @@ public class DeserializersForBasicTypes {
 	public static abstract class MarshalledObjectDeserializerBase<T>
 		  	 		  implements Deserializer<T> {
 
-		private final Class<T>  _mappedType;
-		private final MimeType  _mimeType;
+				private final Class<T> _mappedType;
+				private final MimeType _mimeType;
 		@Getter private final Marshaller _objectsMarshaller;
 
 		public MarshalledObjectDeserializerBase(final Class<T> mappedType,
 												final MimeType  mimeType,
 												final Marshaller modelObjectsMarshaller) {
 			_mappedType = mappedType;
-			_mimeType =   mimeType;
+			_mimeType = mimeType;
 			_objectsMarshaller = modelObjectsMarshaller;
 		}
 

@@ -1,0 +1,13 @@
+package r01f.cloud.aws.s3.events.http.consumer;
+
+import r01f.cloud.aws.s3.events.http.AWSS3HttpEventServiceConfig;
+
+
+public interface AWSS3HttpConsumerServiceConfig
+		 extends AWSS3HttpEventServiceConfig {
+/////////////////////////////////////////////////////////////////////////////////////////
+// Custom Properties for Consumer see :
+//	
+/////////////////////////////////////////////////////////////////////////////////////////	
+	
+}

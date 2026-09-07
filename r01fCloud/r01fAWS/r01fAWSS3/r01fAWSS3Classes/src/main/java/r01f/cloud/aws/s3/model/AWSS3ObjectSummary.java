@@ -1,5 +1,7 @@
 package r01f.cloud.aws.s3.model;
 
+import java.time.Instant;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +15,9 @@ public class AWSS3ObjectSummary
 /////////////////////////////////////////////////////////////////////////////////////////
 //	fields
 /////////////////////////////////////////////////////////////////////////////////////////
-	@Getter @Setter AWSS3Bucket _bucket;
+	@Getter @Setter AWSS3BucketID _bucket;
 	@Getter @Setter AWSS3ObjectKey _key;
+	@Getter @Setter Instant _lastModified;
 	@Getter @Setter boolean _isFolder;
 /////////////////////////////////////////////////////////////////////////////////////////
 //

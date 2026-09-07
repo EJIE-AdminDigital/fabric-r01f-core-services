@@ -1,6 +1,7 @@
 package r01f.messaging.rabbitmq.test.model;
 
-import r01f.guids.OIDBaseMutable;
+import lombok.Getter;
+import r01f.guids.OIDTyped;
 import r01f.guids.PersistableObjectOID;
 import r01f.objectstreamer.annotations.MarshallType;
 
@@ -9,40 +10,54 @@ public abstract class MyOIDs {
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 	@MarshallType(as="myTestOid")
-	public static class MyTestOID
-				extends OIDBaseMutable<String>
-			 implements PersistableObjectOID {
-		private static final long serialVersionUID = -7707974037201898058L;
-
-		public MyTestOID() {
-
-		}
-		public MyTestOID(final String oid) {
-			super(oid);
-		}
-		public static MyTestOID valueOf(final String oid) {
+	public record MyTestOID(@Getter String id)
+	   implements OIDTyped<String>,
+	   			  PersistableObjectOID {
+		public static MyTestOID from(final String oid) {
 			return new MyTestOID(oid);
 		}
 		public static MyTestOID forId(final String oid) {
 			return new MyTestOID(oid);
 		}
+		public static MyTestOID valueOf(final String oid) {
+			return new MyTestOID(oid);
+		}
+		public static MyTestOID fromString(final String oid) {
+			return new MyTestOID(oid);
+		}
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
+		}
 	}
 	@MarshallType(as="myOtherTestOid")
-	public static class MyOtherTestOID
-				extends OIDBaseMutable<String> {
-		private static final long serialVersionUID = 2580594432728786982L;
-
-		public MyOtherTestOID() {
-
-		}
-		public MyOtherTestOID(final String oid) {
-			super(oid);
-		}
-		public static MyOtherTestOID valueOf(final String oid) {
+	public record MyOtherTestOID(@Getter String id)
+	   implements OIDTyped<String> {
+		public static MyOtherTestOID from(final String oid) {
 			return new MyOtherTestOID(oid);
 		}
 		public static MyOtherTestOID forId(final String oid) {
 			return new MyOtherTestOID(oid);
+		}
+		public static MyOtherTestOID valueOf(final String oid) {
+			return new MyOtherTestOID(oid);
+		}
+		public static MyOtherTestOID fromString(final String oid) {
+			return new MyOtherTestOID(oid);
+		}
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
 		}
 	}
 }

@@ -122,6 +122,7 @@ public class JavaMailSenderRESTServiceImpl
 																					   responseResult.loadAsString()));
 			}
 		} catch (final Throwable e) {
+			e.printStackTrace();
 			log.error("[JavaMailSender (rest service)]: Error > {}",
 					  e.getMessage(),e);
 			throw new JavaMailSenderRESTServiceImplException(e.getLocalizedMessage());

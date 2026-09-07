@@ -1,19 +1,15 @@
 package r01f.core.fileexplorer;
 
-import r01f.guids.OIDBaseMutable;
+import lombok.Getter;
+import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
 
 @MarshallType(as="volumeId")
-public class FileExplorerVolumeID 
-	 extends OIDBaseMutable<Character> {
-
-	private static final long serialVersionUID = -4666561604587463857L;
+public record FileExplorerVolumeID(@Getter Character id) 
+   implements OIDTyped<Character> {
 /////////////////////////////////////////////////////////////////////////////////////////
-//	CONSTRUCTOR & BUILDER
-/////////////////////////////////////////////////////////////////////////////////////////	
-	public FileExplorerVolumeID(final Character ch) {
-		super(ch);
-	}
+//	
+/////////////////////////////////////////////////////////////////////////////////////////
 	public static FileExplorerVolumeID from(final Character ch) {
 		return new FileExplorerVolumeID(ch);
 	}
@@ -30,9 +26,13 @@ public class FileExplorerVolumeID
 //	
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
+	public String asString() {
+		return this.toString();
+	}
+	@Override
 	public String toString() {
 		// BEWARE!! volumeId is like {char}_ (contains the underscore)
-		return super.toString() + "_";
+		return this.id.toString() + "_";
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //	

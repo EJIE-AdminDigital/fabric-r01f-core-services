@@ -1,9 +1,10 @@
 package r01f.cloud.aws.s3.api.interfaces;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Collection;
 
-import r01f.cloud.aws.s3.model.AWSS3Bucket;
+import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.cloud.aws.s3.model.AWSS3FileFilter;
 import r01f.cloud.aws.s3.model.AWSS3FolderPath;
 import r01f.cloud.aws.s3.model.AWSS3ObjectSummary;
@@ -19,7 +20,7 @@ public interface AWSS3ServicesForFiler {
 	 * @param folderPath
 	 * @return
 	 */
-	public boolean existsFolder(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath);
+	public boolean existsFolder(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath);
 	
 	/**
 	 * Checks if a folder exists into bucket
@@ -30,7 +31,7 @@ public interface AWSS3ServicesForFiler {
 	 *		  - false: just and only implicitly forming part of the name of an object foo/myfolder
 	 * @return
 	 */
-	public boolean existsFolder(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath, 
+	public boolean existsFolder(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath, 
 								final boolean physicallyExistenceCheck);
 	
 	/**
@@ -39,7 +40,7 @@ public interface AWSS3ServicesForFiler {
 	 * @param folderPath
 	 * @return
 	 */
-	public boolean hasSubfolder(final AWSS3Bucket bucket,
+	public boolean hasSubfolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath);
 	
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +53,7 @@ public interface AWSS3ServicesForFiler {
 	 * @return
 	 * @throws IOException
 	 */
-	public boolean copyFolder(final AWSS3Bucket bucket,
+	public boolean copyFolder(final AWSS3BucketID bucket,
 							  final AWSS3FolderPath srcPath,final AWSS3FolderPath dstPath,
 							  final boolean overwrite) throws IOException;
 	/**
@@ -63,7 +64,7 @@ public interface AWSS3ServicesForFiler {
 	 * @param overwrite
 	 * @return
 	 */
-	public boolean moveFolder(final AWSS3Bucket bucket,
+	public boolean moveFolder(final AWSS3BucketID bucket,
 							  final AWSS3FolderPath srcPath,final AWSS3FolderPath dstPath,
 							  final boolean overwrite);
 
@@ -76,7 +77,7 @@ public interface AWSS3ServicesForFiler {
 	 * @return
 	 * @throws IOException
 	 */
-	public boolean createFolder(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath);
+	public boolean createFolder(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath);
 	/**
 	 * Creates a dir
 	 * @param bucket
@@ -88,14 +89,14 @@ public interface AWSS3ServicesForFiler {
 	 * @return
 	 * @throws IOException
 	 */
-	public boolean createFolder(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath,final MimeType contentType,final boolean physicallyExistenceCheck);
+	public boolean createFolder(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath,final MimeType contentType,final boolean physicallyExistenceCheck);
 	/**
 	 * Deletes a directory no matter if it's not empty
 	 * @param folderPath
 	 * @return
 	 * @throws IOException
 	 */
-	public boolean deleteFolder(final  AWSS3Bucket bucket,final AWSS3FolderPath folderPath) ;
+	public boolean deleteFolder(final  AWSS3BucketID bucket,final AWSS3FolderPath folderPath) ;
 /////////////////////////////////////////////////////////////////////////////////////////
 //  LIST
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -106,7 +107,7 @@ public interface AWSS3ServicesForFiler {
 	 * @param recursive
 	 * @return
 	 */
-	public Collection<AWSS3ObjectSummary> listBucketContents(final AWSS3Bucket bucket,
+	public Collection<AWSS3ObjectSummary> listBucketContents(final AWSS3BucketID bucket,
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive);
 	/**
@@ -118,8 +119,21 @@ public interface AWSS3ServicesForFiler {
 	 * @return files and dirs
 	 * @throws IOException
 	 */
-	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath, 
+	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath, 
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive, 
 															 final boolean excludeFolderTypes);
+	
+	
+
+	/**
+	 * List objects modified since last time.
+	 * @param bucket
+	 * @param folderPath
+	 * @param modifiedSince
+	 * @return
+	 */
+	public Collection<AWSS3ObjectSummary> listModifiedFolderContents(final AWSS3BucketID bucket,
+																	 final AWSS3FolderPath folderPath,
+																	 final Instant modifiedSince);
 }

@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import r01f.cloud.nexmo.NexmoAPI.NexmoAPIData;
 import r01f.cloud.nexmo.api.interfaces.NexmoServicesForMessagingApplication;
 import r01f.cloud.nexmo.model.Message;
-import r01f.cloud.nexmo.model.NexmoIDS.MessageUUID;
+import r01f.cloud.nexmo.model.NexmoIDS.NexmoMessageUUID;
 import r01f.cloud.nexmo.model.Peer;
 import r01f.cloud.nexmo.model.outbound.NexmoOutboundMessage;
 import r01f.httpclient.HttpHeader;
@@ -87,8 +87,8 @@ public class NexmoServicesForMessagingApplicationImpl
 				e.printStackTrace();
 			 }
 			 log.warn( "json response {}",response);
-			 MessageUUID uuid = _marshaller.forReading()
-			                               .fromJson(response, MessageUUID.class);
+			 NexmoMessageUUID uuid = _marshaller.forReading()
+			                               .fromJson(response, NexmoMessageUUID.class);
 			 log.warn(" post message uuid {}",uuid.asString());
 			 out.setUuid(uuid);
 			 return out;

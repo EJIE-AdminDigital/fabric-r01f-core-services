@@ -24,6 +24,12 @@
 <!-- ====================================================================== -->
 	<modules>
 		<module>r01fAWSS3Classes</module>
-		<module>r01fAWSS3GuiceClasses</module>		
+		<module>r01fAWSS3GuiceClasses</module>	
+		<module>r01fAWSS3SpringClasses</module>	
+	
+		<module>r01fAWSS3EventNotifications</module>
+		<module>r01fAWSS3Track</module>
+		
+					
   </modules>
 </project>

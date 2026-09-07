@@ -11,8 +11,8 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import r01f.cache.DistributedCacheConfig;
-import r01f.guids.CommonOIDs.AppCode;
-import r01f.guids.CommonOIDs.AppComponent;
+import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.guids.CommonOIDs.IsAppComponent;
 import r01f.xml.XMLStringSerializer;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
@@ -28,8 +28,8 @@ public class DistributedCacheHazelcastConfig
 /////////////////////////////////////////////////////////////////////////////////////////
 //	FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
-	@Getter private final AppCode _appCode;
-	@Getter private final AppComponent _appComponent;
+	@Getter private final IsAppCode _appCode;
+	@Getter private final IsAppComponent _appComponent;
 	@Getter private final Config _HZConfig;
 /////////////////////////////////////////////////////////////////////////////////////////
 //	HAZELCAST CONFIG FILE: contains client and server data.
@@ -39,18 +39,18 @@ public class DistributedCacheHazelcastConfig
 //		http://docs.hazelcast.org/docs/3.5/manual/html/configuringhazelcast.html
 //		http://docs.hazelcast.org/docs/3.4/manual/html/configurationoverview.html
 /////////////////////////////////////////////////////////////////////////////////////////
-	public DistributedCacheHazelcastConfig(final AppCode appCode,final AppComponent appComponent,
+	public DistributedCacheHazelcastConfig(final IsAppCode appCode,final IsAppComponent appComponent,
 								           final Config hzConfig) {
 		_appCode = appCode;
 		_appComponent = appComponent;
 		_HZConfig = hzConfig;
 	}
-	public DistributedCacheHazelcastConfig(final AppCode appCode,final AppComponent appComponent,
+	public DistributedCacheHazelcastConfig(final IsAppCode appCode,final IsAppComponent appComponent,
 								           final String hzXmlConfig) {
 		this(appCode,appComponent,
 			 new InMemoryXmlConfig(hzXmlConfig));
 	}
-	public static DistributedCacheHazelcastConfig createFrom(final AppCode appCode,final AppComponent appComponent,
+	public static DistributedCacheHazelcastConfig createFrom(final IsAppCode appCode,final IsAppComponent appComponent,
 								           					 final Config hzConfig) {
 		return new DistributedCacheHazelcastConfig(appCode,appComponent,
 												   hzConfig);

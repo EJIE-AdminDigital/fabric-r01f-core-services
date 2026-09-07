@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- PARENT                                                                 -->
+	<!-- ====================================================================== -->
+	<parent>
+		<groupId>r01.fabric.coreservices.cloud.aws.s3.track</groupId>
+		<artifactId>r01fAWSS3Track</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<!-- ====================================================================== -->
+	<!-- ARTIFACT                                                               -->
+	<!-- ====================================================================== -->
+	<name>r01fAWSS3TrackClasses</name>
+	<artifactId>r01fAWSS3TrackClasses</artifactId>
+
+	<!-- ====================================================================== -->
+	<!-- DEPENDENCIES                                                           -->
+	<!-- ====================================================================== -->
+	<dependencies>
+
+
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3</groupId>
+			<artifactId>r01fAWSS3Classes</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>r01.fabric.coreservices.cloud.aws.s3.events</groupId>
+			<artifactId>r01fAWSS3EventNotificationsCommonClasses</artifactId>
+			<version>${revision}</version>
+		</dependency>
+	</dependencies>
+
+</project>

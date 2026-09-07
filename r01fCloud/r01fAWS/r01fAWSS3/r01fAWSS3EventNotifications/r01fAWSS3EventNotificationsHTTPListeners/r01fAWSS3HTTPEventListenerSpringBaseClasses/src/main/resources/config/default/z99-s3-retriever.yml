@@ -1,0 +1,7 @@
+s3:
+  events:
+    retriever:
+      corePoolSize: 15
+      maxPoolSize: 60
+      queueCapacity: 200
+      threadNamePrefix: "z99-s3-async-"

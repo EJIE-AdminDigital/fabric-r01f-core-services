@@ -20,9 +20,6 @@ import com.google.api.client.googleapis.GoogleUtils;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-
-
-
 import com.google.api.client.googleapis.auth.oauth2.GoogleOAuthConstants;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.HttpTransport;
@@ -42,7 +39,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 import r01f.exceptions.Throwables;
 import r01f.guids.CommonOIDs.AppCode;
-import r01f.guids.OIDBaseImmutable;
+import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.guids.OIDTyped;
 import r01f.httpclient.HttpClientProxySettings;
 import r01f.objectstreamer.annotations.MarshallType;
 import r01f.resources.ResourceToBeLoaded;
@@ -221,7 +219,7 @@ public abstract class GoogleAPI {
 /////////////////////////////////////////////////////////////////////////////////////////
 	public static Gmail createGmailService(final HttpTransport httpTransport,
 										   final JsonFactory jsonFactory,
-										   final AppCode appCode,
+										   final IsAppCode appCode,
 										   final GoogleCredential credential) {
 
 	    // [ TO-DO ] Goolge Credentials.
@@ -258,7 +256,7 @@ public abstract class GoogleAPI {
 //  [Service Account] is to be used for [Server-to-Google API] with no user interaction
 /////////////////////////////////////////////////////////////////////////////////////////
 	public static interface GoogleAPIClientData {
-		public AppCode getAppCode();
+		public IsAppCode getAppCode();
 		public GoogleAPIClientID getClientId();
 		public Set<String> getScopes();
 	}
@@ -283,7 +281,8 @@ public abstract class GoogleAPI {
 	@RequiredArgsConstructor @AllArgsConstructor
 	public static class GoogleAPIServiceAccountClientData
 			 implements GoogleAPIClientData {
-		@Getter private final AppCode _appCode;
+		
+		@Getter private final IsAppCode _appCode;
 		@Getter private final GoogleAPIClientID _clientId;
 		@Getter private final GoogleAPIClientEMailAddress _clientEmail;
 		@Getter private final GoogleAPIClientP12KeyPath _p12KeyPath;
@@ -300,14 +299,30 @@ public abstract class GoogleAPI {
 		@Getter private final Set<String> _scopes;
 	}
 	@MarshallType(as="googleAPIClientId")
-	public static class GoogleAPIClientID
-				extends OIDBaseImmutable<String> {
-		private static final long serialVersionUID = 6988744585167182617L;
-		private GoogleAPIClientID(final String id) {
-			super(id);
+	public record GoogleAPIClientID(@Getter String id)
+	   implements OIDTyped<String> {
+		public static GoogleAPIClientID from(final String id) {
+			return new GoogleAPIClientID(id);
+		}
+		public static GoogleAPIClientID forId(final String id) {
+			return new GoogleAPIClientID(id);
+		}
+		public static GoogleAPIClientID valueOf(final String id) {
+			return new GoogleAPIClientID(id);
+		}
+		public static GoogleAPIClientID fromString(final String id) {
+			return new GoogleAPIClientID(id);
 		}
 		public static GoogleAPIClientID of(final String id) {
 			return new GoogleAPIClientID(id);
+		}
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
 		}
 	}
 	@MarshallType(as="googleAPIClientEMail")

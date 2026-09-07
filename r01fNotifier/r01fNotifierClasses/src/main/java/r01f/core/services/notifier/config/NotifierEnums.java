@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
+import r01f.core.services.notifier.NotifierOIDs.IsNotifierObjectID;
 import r01f.enums.EnumExtended;
-import r01f.guids.OIDBaseImmutable;
 import r01f.types.contact.NotificationMedium;
 
 @NoArgsConstructor(access=AccessLevel.PRIVATE)
@@ -41,18 +41,28 @@ public abstract class NotifierEnums {
 /////////////////////////////////////////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////////////////////////////////////////
-	public static class NotifierImpl
-				extends OIDBaseImmutable<String> {
+	public record NotifierImpl(@Getter String id)
+	   implements IsNotifierObjectID {
 
-		private static final long serialVersionUID = -7135064660162600274L;
-		protected NotifierImpl(final String id) {
-			super(id);
-		}
-		public static NotifierImpl valueOf(final String id) {
+		public static NotifierImpl from(final String id) {
 			return new NotifierImpl(id);
 		}
 		public static NotifierImpl forId(final String id) {
 			return new NotifierImpl(id);
+		}
+		public static NotifierImpl valueOf(final String id) {
+			return new NotifierImpl(id);
+		}
+		public static NotifierImpl fromString(final String id) {
+			return new NotifierImpl(id);
+		}
+
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
 		}
 	}
 	@Accessors(prefix="_")

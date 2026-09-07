@@ -20,7 +20,7 @@ import com.google.common.collect.Maps;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import r01f.cloud.aws.s3.api.interfaces.AWSS3ServicesForObjects;
-import r01f.cloud.aws.s3.model.AWSS3Bucket;
+import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.cloud.aws.s3.model.AWSS3ObjectCopyResult;
 import r01f.cloud.aws.s3.model.AWSS3ObjectDeleteResult;
 import r01f.cloud.aws.s3.model.AWSS3ObjectGetRequest;
@@ -90,7 +90,7 @@ public class AWSS3ServicesForObjectsImpl
 	}
 
 	@Override @SneakyThrows
-	public AWSS3ObjectPutResult putObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 							   	 	      final InputStream streamToUpload,
 							   	 	      final Collection<AWSS3ObjectMetaDataItem> customMetadata) {
 		StreamProbe p = _probeEmpty(streamToUpload);
@@ -102,7 +102,7 @@ public class AWSS3ServicesForObjectsImpl
 	}
 	
 	@Override @SneakyThrows
-	public AWSS3ObjectPutResult putObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 							   	 	      final InputStream streamToUpload,
 							   	 	      final Collection<AWSS3ObjectMetaDataItem> customMetadata,
 							   	 	      final MimeType contentType) {
@@ -115,14 +115,14 @@ public class AWSS3ServicesForObjectsImpl
 	}
 	
 	@Override
-	public AWSS3ObjectPutResult putObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 										  final byte[] bytes,
 									      final Collection<AWSS3ObjectMetaDataItem> customMetadata) {
 		return putObject(bucket,key,bytes,customMetadata,MimeTypes.OCTECT_STREAM); // default mimetype
 	}
 	
 	@Override
-	public AWSS3ObjectPutResult putObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 										  final File file,
 										  final Collection<AWSS3ObjectMetaDataItem> customMetadata) {
 		
@@ -130,7 +130,7 @@ public class AWSS3ServicesForObjectsImpl
 	}	
 
 	@Override
-	public AWSS3ObjectPutResult putObject(final AWSS3Bucket bucket, final AWSS3ObjectKey key,final byte[] bytes,
+	public AWSS3ObjectPutResult putObject(final AWSS3BucketID bucket, final AWSS3ObjectKey key,final byte[] bytes,
 									      final Collection<AWSS3ObjectMetaDataItem> customMetadata,
 									      final MimeType contentType) {
 		if (bytes == null) throw new IllegalArgumentException(Strings.customized("The bytes to be stored at bucket/key={}/{} cannot be null!!!",
@@ -151,7 +151,7 @@ public class AWSS3ServicesForObjectsImpl
 								.with(putRes);
 	}
     //https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/best-practices-s3-uploads.html
-	private AWSS3ObjectPutResult _putObjectWithMultipartUpload(final AWSS3Bucket bucket, 
+	private AWSS3ObjectPutResult _putObjectWithMultipartUpload(final AWSS3BucketID bucket, 
 															   final AWSS3ObjectKey key,
 															   final InputStream streamToUpload,
 															   final Collection<AWSS3ObjectMetaDataItem> customMetadata,
@@ -274,7 +274,7 @@ public class AWSS3ServicesForObjectsImpl
 //								   .with(completedFileUpload.response());
 //	}
 	@Override
-	public AWSS3ObjectPutResult putObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 							     	      final File file,
 							     	      final Collection<AWSS3ObjectMetaDataItem> customMetadata,
 							     	      final MimeType contentType) {
@@ -299,7 +299,7 @@ public class AWSS3ServicesForObjectsImpl
 // APPEND
 /////////////////////////////////////////////////////////////////////////////////////////	
 	@Override @SneakyThrows
-	public AWSS3ObjectPutResult appendToObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult appendToObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 									   	 	   final InputStream contentToAppendStream,
 									   	 	   final Collection<AWSS3ObjectMetaDataItem> customMetadata) {
 			
@@ -433,13 +433,13 @@ public class AWSS3ServicesForObjectsImpl
 // PUT BIG OBJECT
 /////////////////////////////////////////////////////////////////////////////////////////		
 	@Override
-	public AWSS3ObjectPutResult putHugeObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putHugeObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 				    					  	  final File file,
 				    					  	  final AWSS3OperationSettings operationSettings) {		
 		return this.putHugeObject(bucket,key,file,operationSettings,null);
 	}
     @Override
-	public AWSS3ObjectPutResult putHugeObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putHugeObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 				    					  	  final File file,
 				    					  	  final AWSS3OperationSettings operationSettings,
 				    					  	  final Collection<AWSS3ObjectMetaDataItem> customMetadata) {
@@ -469,7 +469,7 @@ public class AWSS3ServicesForObjectsImpl
 //		}
 //	}
 	@Override
-	public AWSS3ObjectPutResult putHugeObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public AWSS3ObjectPutResult putHugeObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 				    					  	  final File file,
 				    					  	  final AWSS3OperationSettings operationSettings,
 				    					  	  final Collection<AWSS3ObjectMetaDataItem> customMetadata,
@@ -559,7 +559,7 @@ public class AWSS3ServicesForObjectsImpl
 //	HEAD
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public AWSS3ObjectHeadResult headObject(final AWSS3Bucket bucket, final AWSS3ObjectKey key) {
+	public AWSS3ObjectHeadResult headObject(final AWSS3BucketID bucket, final AWSS3ObjectKey key) {
 		log.debug("HEAD on object at bucket/key={}/{}",
 				                                    bucket,key);
 	  //The HEAD operation retrieves metadata from an object without returning the object itself.
@@ -583,20 +583,20 @@ public class AWSS3ServicesForObjectsImpl
 	}
 	
 	@Override @SuppressWarnings("resource")
-	public AWSS3ObjectGetResult getObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,final AWSS3Range range) {
+	public AWSS3ObjectGetResult getObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,final AWSS3Range range) {
 		log.info("GET object at bucket/key={}/{}/{}",
 				 bucket,key, range);
 		return _getObject(bucket, key, Optional.ofNullable(range));
 	}
 	
 	@Override @SuppressWarnings("resource")
-	public AWSS3ObjectGetResult getObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectGetResult getObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		log.info("GET object at bucket/key={}/{}",
 				 bucket,key);
 		return _getObject(bucket, key, Optional.empty());
 	}
 	
-	private AWSS3ObjectGetResult _getObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,final Optional<AWSS3Range> rangeOptional) {
+	private AWSS3ObjectGetResult _getObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,final Optional<AWSS3Range> rangeOptional) {
 		log.info("GET object at bucket/key={}/{}/{}",
 				 bucket,key, rangeOptional);
 		
@@ -615,7 +615,7 @@ public class AWSS3ServicesForObjectsImpl
 
 
 	@Override
-	public void getHugeObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
+	public void getHugeObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
 							  final AWSS3OperationSettings operationSettings) {
 		throw new UnsupportedOperationException("Not yet implemented!");		// see https://github.com/aws/aws-sdk-java-v2/tree/master/docs/design/services/s3/transfermanager
 	}
@@ -623,7 +623,7 @@ public class AWSS3ServicesForObjectsImpl
 //	DELETE
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public AWSS3ObjectDeleteResult deleteObject(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectDeleteResult deleteObject(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		log.info("DELETE object at bucket/key={}/{}",
 				 bucket,key);
 		DeleteObjectRequest req = DeleteObjectRequest.builder()
@@ -638,8 +638,8 @@ public class AWSS3ServicesForObjectsImpl
 //	COPY
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public AWSS3ObjectCopyResult copyObject(final AWSS3Bucket srcBucket,final AWSS3ObjectKey srcKey,
-											final AWSS3Bucket dstBucket,final AWSS3ObjectKey dstKey) {
+	public AWSS3ObjectCopyResult copyObject(final AWSS3BucketID srcBucket,final AWSS3ObjectKey srcKey,
+											final AWSS3BucketID dstBucket,final AWSS3ObjectKey dstKey) {
 		log.info("COPY object from bucket/key={}/{} to bucket/key={}/{}",
 				 							  srcBucket,srcKey,dstBucket,dstKey);
 		CopyObjectRequest req = CopyObjectRequest.builder()
@@ -657,7 +657,7 @@ public class AWSS3ServicesForObjectsImpl
 /////////////////////////////////////////////////////////////////////////////////////////
 //	ATTRIBUTES
 /////////////////////////////////////////////////////////////////////////////////////////	
-	public GetObjectAttributesRequest getObjectAttributes(final AWSS3Bucket srcBucket,final AWSS3ObjectKey srcKey) {
+	public GetObjectAttributesRequest getObjectAttributes(final AWSS3BucketID srcBucket,final AWSS3ObjectKey srcKey) {
 		log.warn("Attributes for bucket {} and object {}",
 				 srcBucket.toString(),srcKey.asString());
 		

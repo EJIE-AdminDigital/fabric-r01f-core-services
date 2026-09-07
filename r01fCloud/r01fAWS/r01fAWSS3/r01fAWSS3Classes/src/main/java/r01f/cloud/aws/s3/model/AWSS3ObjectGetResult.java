@@ -24,12 +24,12 @@ public class AWSS3ObjectGetResult
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectGetResult(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectGetResult(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		super(bucket,key,
-			  AWSS3RequestedOperation.GET);
+			  AWSS3Operation.GET);
 	}
 	@SuppressWarnings("resource")
-	public static AWSS3ObjectDownloadResultBuilderInputStreamStep fromGetObjectResponseOn(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public static AWSS3ObjectDownloadResultBuilderInputStreamStep fromGetObjectResponseOn(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		AWSS3ObjectGetResult res = new AWSS3ObjectGetResult(bucket,key);
 		return res.new AWSS3ObjectDownloadResultBuilderInputStreamStep();
 	}

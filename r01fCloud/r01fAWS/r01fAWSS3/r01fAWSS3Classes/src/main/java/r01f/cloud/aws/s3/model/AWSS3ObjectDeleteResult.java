@@ -22,11 +22,11 @@ public class AWSS3ObjectDeleteResult
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectDeleteResult(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectDeleteResult(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		super(bucket,key,
-			  AWSS3RequestedOperation.DELETE);
+			  AWSS3Operation.DELETE);
 	}
-	public static AWSS3DeleteResultBuilderStep fromDeleteObjectResponseOn(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public static AWSS3DeleteResultBuilderStep fromDeleteObjectResponseOn(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		AWSS3ObjectDeleteResult res = new AWSS3ObjectDeleteResult(bucket,key);
 		return res.new AWSS3DeleteResultBuilderStep();
 	}

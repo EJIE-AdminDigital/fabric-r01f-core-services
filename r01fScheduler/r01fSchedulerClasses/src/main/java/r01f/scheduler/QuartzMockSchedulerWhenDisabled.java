@@ -1,6 +1,7 @@
 package r01f.scheduler;
 
-import java.util.Date;
+
+import java.time.Instant;
 
 import org.quartz.CronExpression;
 import org.quartz.Job;
@@ -38,7 +39,7 @@ public abstract class QuartzMockSchedulerWhenDisabled
 	}
 	@Override
 	public <J extends Job> boolean scheduleJob(final Class<J> jobType, 
-											   final Date startDate,
+											   final Instant startDate,
 											   final int repetitions,final TimeLapse intervalWithinRepetitions) throws SchedulerException {
 		log.warn("scheduler is DISABLED, check properties file!");
 		return true;

@@ -9,11 +9,11 @@ public class AWSS3ObjectGetRequest
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
-	public AWSS3ObjectGetRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key) {
+	public AWSS3ObjectGetRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key) {
 		super(bucket,key);
 	}
 	
-	public AWSS3ObjectGetRequest(final AWSS3Bucket bucket,final AWSS3ObjectKey key, final AWSS3Range range) {
+	public AWSS3ObjectGetRequest(final AWSS3BucketID bucket,final AWSS3ObjectKey key, final AWSS3Range range) {
 		super(bucket,key,range);
 	}
 }

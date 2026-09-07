@@ -1,10 +1,11 @@
 package r01f.cloud.aws.s3.client.api.delegates;
 
+import java.time.Instant;
 import java.util.Collection;
 
 import r01f.cloud.aws.s3.api.interfaces.AWSS3ServicesForFiler;
 import r01f.cloud.aws.s3.api.interfaces.impl.AWSS3ServicesForFilerImpl;
-import r01f.cloud.aws.s3.model.AWSS3Bucket;
+import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.cloud.aws.s3.model.AWSS3FileFilter;
 import r01f.cloud.aws.s3.model.AWSS3FolderPath;
 import r01f.cloud.aws.s3.model.AWSS3ObjectSummary;
@@ -27,13 +28,13 @@ public class AWSS3ClientAPIDelegateForFiler
 //	EXISTENCE
 /////////////////////////////////////////////////////////////////////////////////////////	
 	@Override
-	public boolean existsFolder(final AWSS3Bucket bucket,
+	public boolean existsFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath path) {
 		return _serviceForFolderFilerImpl.existsFolder(bucket,
 													   path);
 	}
 	@Override
-	public boolean existsFolder(final AWSS3Bucket bucket,
+	public boolean existsFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath path,
 								final boolean physicallyExistenceCheck) {
 		return _serviceForFolderFilerImpl.existsFolder(bucket,
@@ -41,7 +42,7 @@ public class AWSS3ClientAPIDelegateForFiler
 													   physicallyExistenceCheck);
 	}
 	@Override
-	public boolean hasSubfolder(final AWSS3Bucket bucket,
+	public boolean hasSubfolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath path) {
 		return _serviceForFolderFilerImpl.hasSubfolder(bucket,
 													   path);
@@ -50,7 +51,7 @@ public class AWSS3ClientAPIDelegateForFiler
 //	COPY / MOVE / RENAME
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean copyFolder(final AWSS3Bucket bucket,
+	public boolean copyFolder(final AWSS3BucketID bucket,
 							  final AWSS3FolderPath srcPath,final AWSS3FolderPath dstPath,
 							  final boolean overwrite) {
 		return _serviceForFolderFilerImpl.copyFolder(bucket,
@@ -58,7 +59,7 @@ public class AWSS3ClientAPIDelegateForFiler
 													 overwrite);
 	}
 	@Override
-	public boolean moveFolder(final AWSS3Bucket bucket,
+	public boolean moveFolder(final AWSS3BucketID bucket,
 							  final AWSS3FolderPath srcPath,final AWSS3FolderPath dstPath,
 							  final boolean overwrite) {
 		return _serviceForFolderFilerImpl.moveFolder(bucket,
@@ -70,13 +71,13 @@ public class AWSS3ClientAPIDelegateForFiler
 //	CREATE & DELETE
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public boolean createFolder(final AWSS3Bucket bucket,
+	public boolean createFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath) {
 		return _serviceForFolderFilerImpl.createFolder(bucket,
 													   folderPath);
 	}
 	@Override
-	public boolean createFolder(final AWSS3Bucket bucket,
+	public boolean createFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath,
 								final MimeType contentType,
 								final boolean physicallyExistenceCheck) {
@@ -86,7 +87,7 @@ public class AWSS3ClientAPIDelegateForFiler
 													   physicallyExistenceCheck);
 	}
 	@Override
-	public boolean deleteFolder(final AWSS3Bucket bucket,
+	public boolean deleteFolder(final AWSS3BucketID bucket,
 								final AWSS3FolderPath folderPath) {
 		return _serviceForFolderFilerImpl.deleteFolder(bucket,
 													   folderPath);
@@ -94,7 +95,7 @@ public class AWSS3ClientAPIDelegateForFiler
 /////////////////////////////////////////////////////////////////////////////////////////
 //	LIST
 /////////////////////////////////////////////////////////////////////////////////////////
-	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3Bucket bucket,final  AWSS3FolderPath folderPath,
+	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3BucketID bucket,final  AWSS3FolderPath folderPath,
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive)  {
 		return _serviceForFolderFilerImpl.listFolderContents(bucket,folderPath,
@@ -102,7 +103,7 @@ public class AWSS3ClientAPIDelegateForFiler
 															 recursive,
 															 false);		// do NOT exclude folders
 	}
-	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3Bucket bucket,final  AWSS3FolderPath folderPath,
+	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3BucketID bucket,final  AWSS3FolderPath folderPath,
 															  final boolean recursive)  {
 		return _serviceForFolderFilerImpl.listFolderContents(bucket,folderPath,
 															 null,
@@ -110,7 +111,7 @@ public class AWSS3ClientAPIDelegateForFiler
 															 false);		// do NOT exclude folders
 	}
 	@Override
-	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath,
+	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath,
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive,
 															 final boolean excludeFolderTypes) {
@@ -119,7 +120,7 @@ public class AWSS3ClientAPIDelegateForFiler
 															 recursive,
 															 excludeFolderTypes);
 	}
-	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3Bucket bucket,final AWSS3FolderPath folderPath,
+	public Collection<AWSS3ObjectSummary> listFolderContents(final AWSS3BucketID bucket,final AWSS3FolderPath folderPath,
 															 final boolean recursive,
 															 final boolean excludeFolderTypes) {
 		return _serviceForFolderFilerImpl.listFolderContents(bucket,
@@ -129,11 +130,19 @@ public class AWSS3ClientAPIDelegateForFiler
 															 excludeFolderTypes);
 	}
 	@Override
-	public Collection<AWSS3ObjectSummary> listBucketContents(final AWSS3Bucket bucket,
+	public Collection<AWSS3ObjectSummary> listBucketContents(final AWSS3BucketID bucket,
 															 final AWSS3FileFilter fileFilter,
 															 final boolean recursive) {
 		return _serviceForFolderFilerImpl.listBucketContents(bucket,
 															 fileFilter,
 															 recursive);
+	}
+	@Override
+	public Collection<AWSS3ObjectSummary> listModifiedFolderContents(final AWSS3BucketID bucket, 
+			                                                         final AWSS3FolderPath folderPath,
+			                                                         final Instant modifiedSince) {
+		return _serviceForFolderFilerImpl.listModifiedFolderContents(bucket,
+																	 folderPath,
+																	 modifiedSince);
 	}	
 }

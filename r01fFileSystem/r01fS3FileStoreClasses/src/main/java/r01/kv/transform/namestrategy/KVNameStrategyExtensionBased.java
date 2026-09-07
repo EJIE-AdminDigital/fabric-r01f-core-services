@@ -3,7 +3,7 @@ package r01.kv.transform.namestrategy;
 import org.apache.commons.io.FilenameUtils;
 
 import lombok.extern.slf4j.Slf4j;
-import r01.model.oids.KEYs.KEY;
+import r01.api.filestore.model.oids.S3KEYs.IsS3Key;
 import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
 import r01f.guids.OIDs;
 import r01f.mime.MimeType;
@@ -11,7 +11,7 @@ import r01f.mime.MimeTypes;
 import r01f.patterns.FactoryFrom;
 import r01f.util.types.Strings;
 @Slf4j
-public class KVNameStrategyExtensionBased<K extends KEY>
+public class KVNameStrategyExtensionBased<K extends IsS3Key>
      extends KVNameStrategyBase<K>
   implements KVNameStrategy {
 	

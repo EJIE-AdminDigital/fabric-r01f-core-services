@@ -16,13 +16,13 @@ public abstract class AWSS3RequestResultBase<SELF_TYPE extends AWSS3RequestResul
 /////////////////////////////////////////////////////////////////////////////////////////
 //  FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
-	@Getter @Setter protected AWSS3RequestedOperation _operation;
+	@Getter @Setter protected AWSS3Operation _operation;
 	@Getter @Setter protected AWSS3RequestID _requestId;
 /////////////////////////////////////////////////////////////////////////////////////////
 //	CONSTRUCTOR
 /////////////////////////////////////////////////////////////////////////////////////////
-    public AWSS3RequestResultBase(final AWSS3Bucket bucket,final AWSS3ObjectKey key,
-    						      final AWSS3RequestedOperation operation) {
+    public AWSS3RequestResultBase(final AWSS3BucketID bucket,final AWSS3ObjectKey key,
+    						      final AWSS3Operation operation) {
     	super(bucket,key);
     	_operation = operation;
     }

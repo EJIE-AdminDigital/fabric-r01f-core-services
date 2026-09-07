@@ -19,18 +19,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import r01f.core.batch.ItemFlowProcessingProgress;
-import r01f.core.batch.ItemFlowProcessingProgressFactory;
 import r01f.core.batch.ItemFlowProcessorBase;
 import r01f.securitycontext.SecurityContext;
 import r01f.util.types.collections.CollectionUtils;
-import r01f.util.types.datetime.DateTimeUtils;
 
 
 @Slf4j
 @Accessors(prefix="_")
-public abstract class ExportAsExcelItemFlowProcessorBase<T,P extends ItemFlowProcessingProgress> 
-	 		  extends ItemFlowProcessorBase<T,P> {
+public abstract class ExportAsExcelItemFlowProcessorBase<T> 
+	 		  extends ItemFlowProcessorBase<T> {
 	
 /////////////////////////////////////////////////////////////////////////////////////////
 //	FIELDS
@@ -49,20 +46,16 @@ public abstract class ExportAsExcelItemFlowProcessorBase<T,P extends ItemFlowPro
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
 	public ExportAsExcelItemFlowProcessorBase(final ExecutorService executorService,
-											  final OutputStream outputStream,
-											  final ItemFlowProcessingProgressFactory<T,P> itemFlowProcessingProgressFactory) {
+											  final OutputStream outputStream) {
 		this(executorService,
 			 outputStream,
-			 itemFlowProcessingProgressFactory,
 			 null);
 	}
 	public ExportAsExcelItemFlowProcessorBase(final ExecutorService executorService,
 											  final OutputStream outputStream,
-											  final ItemFlowProcessingProgressFactory<T,P> itemFlowProcessingProgressFactory,
 											  final Collection<String> columnHeaders) {
 		super(executorService,
-			  outputStream,
-			  itemFlowProcessingProgressFactory);
+			  outputStream);
 		_columnHeaders = columnHeaders;
 		
 		// excel generation
@@ -123,24 +116,22 @@ public abstract class ExportAsExcelItemFlowProcessorBase<T,P extends ItemFlowPro
 		
 		if (value == null) {
 			xlsCell.setBlank();
-		} else if (value instanceof Boolean) {
-			xlsCell.setCellValue((Boolean)value);
-		} else if (value instanceof Date) {
-			Calendar calendar = DateTimeUtils.asCalendar((Date)value);
-			xlsCell.setCellValue(calendar.getTime());
-		} else if (value instanceof Calendar) {
-			Calendar calendar = (Calendar)value;
-			xlsCell.setCellValue(calendar.getTime());
-		} else if (value instanceof Integer) {
-			xlsCell.setCellValue((Integer)value);
-		} else if (value instanceof Long) {
-			xlsCell.setCellValue((Long)value);
-		} else if (value instanceof Double) {
-			xlsCell.setCellValue((Double)value);
-		} else if (value instanceof Float) {
-			xlsCell.setCellValue((Float)value);
-		} else if (value instanceof XSSFRichTextString) {
-			xlsCell.setCellValue((XSSFRichTextString)value);
+		} else if (value instanceof Boolean boolVal) {
+			xlsCell.setCellValue(boolVal);
+		} else if (value instanceof Date dateVal) {
+			xlsCell.setCellValue(dateVal);
+		} else if (value instanceof Calendar calendarVal) {
+			xlsCell.setCellValue(calendarVal.getTime());
+		} else if (value instanceof Integer intVal) {
+			xlsCell.setCellValue(intVal);
+		} else if (value instanceof Long longVal) {
+			xlsCell.setCellValue(longVal);
+		} else if (value instanceof Double doubleVal) {
+			xlsCell.setCellValue(doubleVal);
+		} else if (value instanceof Float floatVal) {
+			xlsCell.setCellValue(floatVal);
+		} else if (value instanceof XSSFRichTextString xssfRichTextStringVal) {
+			xlsCell.setCellValue(xssfRichTextStringVal);
 		} else {
 			xlsCell.setCellValue(value.toString());		 
 		}

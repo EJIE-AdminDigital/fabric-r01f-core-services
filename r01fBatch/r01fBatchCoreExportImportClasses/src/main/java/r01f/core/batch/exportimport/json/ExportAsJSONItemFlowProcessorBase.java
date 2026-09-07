@@ -8,16 +8,13 @@ import java.nio.charset.Charset;
 import java.util.concurrent.ExecutorService;
 
 import lombok.extern.slf4j.Slf4j;
-import r01f.core.batch.ItemFlowProcessingProgress;
-import r01f.core.batch.ItemFlowProcessingProgressFactory;
 import r01f.core.batch.ItemFlowProcessorBase;
 import r01f.objectstreamer.Marshaller;
 import r01f.securitycontext.SecurityContext;
 
 @Slf4j
-public abstract class ExportAsJSONItemFlowProcessorBase<T,M,
-														P extends ItemFlowProcessingProgress>
-	 		  extends ItemFlowProcessorBase<T,P> {
+public abstract class ExportAsJSONItemFlowProcessorBase<T,M>
+	 		  extends ItemFlowProcessorBase<T> {
 /////////////////////////////////////////////////////////////////////////////////////////
 //	FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -32,11 +29,9 @@ public abstract class ExportAsJSONItemFlowProcessorBase<T,M,
 /////////////////////////////////////////////////////////////////////////////////////////	
 	public ExportAsJSONItemFlowProcessorBase(final Marshaller marshaller,
 											 final ExecutorService executorService,
-						   			 		 final OutputStream outputStream,
-						   			 		 final ItemFlowProcessingProgressFactory<T,P> itemFlowProcessingProgressFactory) {
+						   			 		 final OutputStream outputStream) {
 		super(executorService,
-			  outputStream,
-			  itemFlowProcessingProgressFactory);
+			  outputStream);
 		_marshaller = marshaller;
 	}	
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -3,9 +3,9 @@ package r01f.messaging.kafka;
 import java.util.Collection;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import r01f.annotations.Immutable;
-import r01f.guids.OIDBaseMutable;
 import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
 import r01f.types.url.Host;
@@ -21,20 +21,6 @@ public abstract class KafkaIDs {
 					 extends OIDTyped<String> {
 		// just a marker interface
 	}
-	/**
-	 * Base for every Kafka ID's
-	 */
-	@Immutable
-	@NoArgsConstructor
-	public static abstract class KafkaModelObjecIDBase
-						 extends OIDBaseMutable<String>
-					  implements KafkaModelObjecID {
-		private static final long serialVersionUID = 4162366466990455545L;
-
-		public KafkaModelObjecIDBase(final String id) {
-			super(id);
-		}
-	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //KAFKA BOOTSTRAP SERVER
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -43,19 +29,25 @@ public abstract class KafkaIDs {
 	*/
 	@Immutable
 	@MarshallType(as="kafkaBootstrapServer")
-	@NoArgsConstructor
-	public static final class KafkaBootstrapServer
-		extends KafkaModelObjecIDBase {
+	public record KafkaBootstrapServer(@Getter String id)
+	   implements KafkaModelObjecID {
 
-		private static final long serialVersionUID = -1258361406057125328L;
-
-		public KafkaBootstrapServer(final String oid) {
-			super(oid);
+		public static KafkaBootstrapServer from(final String id) {
+			return new KafkaBootstrapServer(id);
 		}
-		public static KafkaBootstrapServer forHostAndPort(final Host host, int port) {
+		public static KafkaBootstrapServer forId(final String id) {
+			return new KafkaBootstrapServer(id);
+		}
+		public static KafkaBootstrapServer valueOf(final String id) {
+			return new KafkaBootstrapServer(id);
+		}
+		public static KafkaBootstrapServer fromString(final String id) {
+			return new KafkaBootstrapServer(id);
+		}
+		public static KafkaBootstrapServer forHostAndPort(final Host host, final int port) {
 			return new KafkaBootstrapServer(Strings.customized("{}:{}", host.asString(),port));
 		}
-		public static KafkaBootstrapServer forLoopbackAddressAndPort(final String loopbackAddress , int port) {
+		public static KafkaBootstrapServer forLoopbackAddressAndPort(final String loopbackAddress , final int port) {
 			/*
 			 * The only fix I found that doesn't involve changing configs every time you reboot (per the "172.*" suggestion above)
 			 *  is to use the IPv6 loopback address ::1 in both the Kafka server config running in Linux and the Java client in Windows.
@@ -77,7 +69,14 @@ public abstract class KafkaIDs {
 		}
 		public static final KafkaBootstrapServer DEFAULT = KafkaBootstrapServer.forLoopbackAddressAndPort("[::1]",9092); // [::1] represents a ipv6 loopback
 
-
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
+		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //	KAFKA GROUP ID
@@ -87,12 +86,11 @@ public abstract class KafkaIDs {
 	 */
 	@Immutable
 	@MarshallType(as="groupId")
-	@NoArgsConstructor
-	public static final class KafkaGroupID
-					  extends KafkaModelObjecIDBase {
-		private static final long serialVersionUID = -6110073635719213157L;
-		public KafkaGroupID(final String oid) {
-			super(oid);
+	public record KafkaGroupID(@Getter String id)
+	   implements KafkaModelObjecID {
+		
+		public static KafkaGroupID from(final String id) {
+			return new KafkaGroupID(id);
 		}
 		public static KafkaGroupID forId(final String id) {
 			return new KafkaGroupID(id);
@@ -100,31 +98,49 @@ public abstract class KafkaIDs {
 		public static KafkaGroupID valueOf(final String str) {
 			return new KafkaGroupID(str);
 		}
+		public static KafkaGroupID fromString(final String id) {
+			return new KafkaGroupID(id);
+		}
 
 		public static final KafkaGroupID DEFAULT = KafkaGroupID.forId("DEFAULT");
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
+		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //	KAFKA PARTITION
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Immutable
 	@MarshallType(as="kafkaPartition")
-	public static final class KafkaPartition
-					  extends KafkaModelObjecIDBase {
-		private static final long serialVersionUID = -6110073635719213157L;
-	///////////////////////////////////////////////////
-	// CONSTRUCTOR
-	//////////////////////////////////////////////////
-		public KafkaPartition(final String oid) {
-			super(oid);
+	public record KafkaPartition(@Getter String id)
+	   implements KafkaModelObjecID {
+		
+		public static KafkaPartition from(final Integer partition) {
+			return new KafkaPartition(Integer.toString(partition));
 		}
-	///////////////////////////////////////////////////
-	// BUILDERS
-	//////////////////////////////////////////////////
 		public static KafkaPartition forId(final Integer partition) {
 			return new KafkaPartition(Integer.toString(partition));
 		}
 		public static KafkaPartition valueOf(final Integer partition) {
 			return new KafkaPartition(Integer.toString(partition));
+		}
+		public static KafkaPartition fromString(final Integer partition) {
+			return new KafkaPartition(Integer.toString(partition));
+		}
+		
+		@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
 		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -132,26 +148,32 @@ public abstract class KafkaIDs {
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Immutable
 	@MarshallType(as="kafkaTopic")
-	public static final class KafkaTopic
-					  extends KafkaModelObjecIDBase {
-		private static final long serialVersionUID = -6110073635719213157L;
-	///////////////////////////////////////////////////
-	// CONSTRUCTOR
-	//////////////////////////////////////////////////
-		public KafkaTopic(final String oid) {
-			super(oid);
+	public record KafkaTopic(@Getter String id)
+	   implements KafkaModelObjecID {
+		
+		public static KafkaTopic from(final String id) {
+			return new KafkaTopic(id);
 		}
-	///////////////////////////////////////////////////
-	// BUILDERS
-	//////////////////////////////////////////////////
 		public static KafkaTopic forId(final String id) {
 			return new KafkaTopic(id);
 		}
 		public static KafkaTopic valueOf(final String str) {
 			return new KafkaTopic(str);
 		}
+		public static KafkaTopic fromString(final String id) {
+			return new KafkaTopic(id);
+		}
 		// To create topic:
 		//   $KAFKA_HOME/bin/kafka-topics.sh --create --topic   default-topic  --bootstrap-server localhost:9092
 		public static final KafkaTopic DEFAULT = KafkaTopic.forId("default-topic");
+		
+				@Override
+		public String asString() {
+			return this.id;
+		}
+		@Override
+		public String toString() {
+			return this.id;
+		}
 	}
 }

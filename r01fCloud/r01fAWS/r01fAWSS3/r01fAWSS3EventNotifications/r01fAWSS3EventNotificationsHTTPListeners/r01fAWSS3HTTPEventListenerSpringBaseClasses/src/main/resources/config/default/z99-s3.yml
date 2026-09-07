@@ -1,0 +1,13 @@
+s3:
+  buckets: # 
+    - bucketId: dena
+      regionId: eu-west-1          # Nueva propiedad mapeada
+      accessKey: minioadmin
+      accessSecret: minioadmin
+      endPointUrl: http://localhost:9001
+      
+    - bucketId: demo
+      regionId: eu-west-1          # Nueva propiedad mapeada
+      accessKey: minioadmin
+      accessSecret: minioadmin
+      endPointUrl: http://localhost:9001

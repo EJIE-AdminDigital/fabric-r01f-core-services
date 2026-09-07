@@ -12,16 +12,14 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
 import lombok.experimental.Accessors;
-import r01f.core.batch.ItemFlowProcessingProgress;
-import r01f.core.batch.ItemFlowProcessingProgressFactory;
 import r01f.core.batch.ItemFlowProcessorBase;
 import r01f.securitycontext.SecurityContext;
 import r01f.util.types.collections.CollectionUtils;
 
 
 @Accessors(prefix="_")
-public abstract class ExportAsCSVItemFlowProcessorBase<T,P extends ItemFlowProcessingProgress>
-	 		  extends ItemFlowProcessorBase<T,P> {
+public abstract class ExportAsCSVItemFlowProcessorBase<T>
+	 		  extends ItemFlowProcessorBase<T> {
 /////////////////////////////////////////////////////////////////////////////////////////
 //	FIELDS
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -32,20 +30,16 @@ public abstract class ExportAsCSVItemFlowProcessorBase<T,P extends ItemFlowProce
 //	CONSTRUCTOR / BUILDER
 /////////////////////////////////////////////////////////////////////////////////////////
 	public ExportAsCSVItemFlowProcessorBase(final ExecutorService executorService,
-											final OutputStream outputStream,
-											final ItemFlowProcessingProgressFactory<T,P> itemFlowProcessingProgressFactory) {
+											final OutputStream outputStream) {
 		this(executorService,
 			 outputStream,
-			 itemFlowProcessingProgressFactory,
 			 null);
 	}
 	public ExportAsCSVItemFlowProcessorBase(final ExecutorService executorService,
 											final OutputStream outputStream,
-											final ItemFlowProcessingProgressFactory<T,P> itemFlowProcessingProgressFactory,
 							   		  	   	final Collection<String> columnHeaders) {
 		super(executorService,
-			  outputStream,
-			  itemFlowProcessingProgressFactory);
+			  outputStream);
 		_columnHeaders = columnHeaders;
 	}
 /////////////////////////////////////////////////////////////////////////////////////////

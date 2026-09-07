@@ -23,12 +23,11 @@ public class SerializersForBasicTypes {
 //	Boolean
 /////////////////////////////////////////////////////////////////////////////////////////
 	public static  class BooleanSerializerBase
-	      implements Serializer<Boolean> {
+	         implements Serializer<Boolean> {
 		@Override
 		public byte[] serialize(final Boolean theBoolean) {
-			if (theBoolean != null)
-				return Boolean.toString(theBoolean).getBytes();
-            //Default
+			if (theBoolean != null) return Boolean.toString(theBoolean).getBytes();
+            // Default
 			return Boolean.toString(Boolean.FALSE).getBytes();
 		}
 	}
@@ -52,7 +51,7 @@ public class SerializersForBasicTypes {
 //	Long
 /////////////////////////////////////////////////////////////////////////////////////////
 	public static abstract class LongSerializerBase
-	  		  implements Serializer<Long> {
+	  		          implements Serializer<Long> {
 		@Override
 		public byte[] serialize(final Long theLong) {
 			if (theLong != null)
@@ -65,12 +64,10 @@ public class SerializersForBasicTypes {
 //	Range
 /////////////////////////////////////////////////////////////////////////////////////////
 	public static  class RangeSerializer
-					  implements Serializer<Range<?>> {
+			  implements Serializer<Range<?>> {
 		@Override
-		public byte[] serialize(final  Range<?> theRange) {
-			if (theRange != null) {
-				return theRange.asString().getBytes();
-			}
+		public byte[] serialize(final Range<?> theRange) {
+			if (theRange != null) return theRange.asString().getBytes();
 		    return ("0".getBytes());
 		}
 	}
@@ -80,7 +77,7 @@ public class SerializersForBasicTypes {
 	@SuppressWarnings("rawtypes")
 	public static abstract class CollectionSerializerBase
 		                 extends MarshalledObjectSerializerBase<Collection> {
-		public CollectionSerializerBase(final Marshaller modelObjectsMarshaller, final MimeType mediaType) {
+		public CollectionSerializerBase(final Marshaller modelObjectsMarshaller,final MimeType mediaType) {
 			super(Collection.class,
 				  mediaType,
 				  modelObjectsMarshaller);
@@ -113,11 +110,11 @@ public class SerializersForBasicTypes {
 /////////////////////////////////////////////////////////////////////////////////////////
 	@Accessors(prefix="_")
 	public static  class MarshalledObjectSerializerBase<T>
-		              implements Serializer<T>,
-		              			 HasMarshaller {
+              implements Serializer<T>,
+              			 HasMarshaller {
 				@SuppressWarnings("unused")
-				private final Class<?>  _mappedType;
-				private final MimeType  _mimeType;
+				private final Class<?> _mappedType;
+				private final MimeType _mimeType;
 
 		@Getter private final Marshaller _modelObjectsMarshaller;
 

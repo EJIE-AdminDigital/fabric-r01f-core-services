@@ -5,7 +5,6 @@ import java.time.Instant;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import r01f.guids.OIDs;
 import r01f.internal.R01FAppCodes;
 import r01f.messaging.model.MessagingFactory;
 import r01f.messaging.rabbitmq.RabbitMQIds.RabbitMQQueue;
@@ -18,6 +17,7 @@ import r01f.messaging.rabbitmq.test.model.MyTestModelObject;
 import r01f.messaging.rabbitmq.test.model.RabbitMQProducerConfigSample;
 import r01f.objectstreamer.Marshaller;
 import r01f.objectstreamer.MarshallerBuilder;
+import r01f.oids.OIDs;
 
 @Accessors(prefix="_")
 public class RabbitMQProducerTest {

@@ -5,7 +5,7 @@ import org.quartz.TriggerKey;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import r01f.guids.CanBeScheduledOID;
+import r01f.oids.CanBeScheduledOID;
 import r01f.patterns.IsBuilder;
 import r01f.scheduler.SchedulerIDs.SchedulerID;
 import r01f.scheduler.SchedulerIDs.SchedulerTriggerID;

@@ -11,8 +11,8 @@ import r01f.core.services.notifier.config.NotifierEnums.NotifierImpl;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
 import r01f.core.services.notifier.properties.NotifierPropertiesForPush;
-import r01f.guids.CommonOIDs.AppCode;
-import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.oids.CommonOIDs.AppCode;
+import r01f.oids.CommonOIDs.IsAppCode;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
 @Accessors(prefix="_")

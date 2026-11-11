@@ -8,7 +8,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobKey;
 
 import lombok.experimental.Accessors;
-import r01f.guids.CanBeScheduledOID;
+import r01f.oids.CanBeScheduledOID;
 import r01f.patterns.FactoryFrom;
 import r01f.scheduler.QuartzSchedulerJobKeyBuilder;
 import r01f.scheduler.SchedulerConfig;

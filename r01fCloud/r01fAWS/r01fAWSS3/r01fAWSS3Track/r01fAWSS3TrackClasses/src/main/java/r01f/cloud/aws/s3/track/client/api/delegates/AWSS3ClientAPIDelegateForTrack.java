@@ -7,6 +7,7 @@ import r01f.cloud.aws.s3.client.api.AWSS3ClientAPI;
 
 import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.cloud.aws.s3.model.AWSS3FolderPath;
+import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
 import r01f.cloud.aws.s3.track.api.interfaces.AWSS3ServicesForTrack;
 import r01f.cloud.aws.s3.track.api.interfaces.impl.AWSS3ServicesForTrackImpl;
 import r01f.cloud.aws.s3.track.model.AWSS3ObjectTrackSummary;
@@ -34,5 +35,19 @@ public class AWSS3ClientAPIDelegateForTrack
 		return _trackImpl.trackModifiedSince(bucket,
 											folderPath,
 											 modifiedSince);
+	}
+
+	public boolean existTrackMarker(final AWSS3BucketID bucket,
+			                        final AWSS3ObjectKey markerKey) {
+       
+		return _trackImpl.existTrackMarker(bucket,
+										  markerKey);
+	}
+
+	public AWSS3ObjectKey createTrackMarker(final AWSS3BucketID bucket, 
+								  			final AWSS3ObjectKey markerKey) {
+		return _trackImpl.createTrackMarker(bucket,
+											markerKey);
+		
 	}	
 }

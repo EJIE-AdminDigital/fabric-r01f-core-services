@@ -3,9 +3,9 @@ package r01f.core.messaging.rabbitmq.consumer.bootstrap;
 import com.google.inject.Binder;
 
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.messaging.rabbitmq.consumer.RabbitMQConsumerServiceConfig;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 
 public class RabbitMQConsumerGuiceModuleForModelObject<O extends OID, M extends ModelObject & HasOID<O>>

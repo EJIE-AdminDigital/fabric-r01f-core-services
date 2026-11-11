@@ -9,8 +9,8 @@ import java.util.concurrent.ExecutorService;
 
 import lombok.extern.slf4j.Slf4j;
 import r01f.core.batch.ItemFlowProcessorBase;
+import r01f.model.security.context.SecurityContext;
 import r01f.objectstreamer.Marshaller;
-import r01f.securitycontext.SecurityContext;
 
 @Slf4j
 public abstract class ExportAsJSONItemFlowProcessorBase<T,M>

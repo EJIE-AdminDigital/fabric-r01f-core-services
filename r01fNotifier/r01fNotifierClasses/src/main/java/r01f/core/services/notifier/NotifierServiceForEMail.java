@@ -1,7 +1,6 @@
 package r01f.core.services.notifier;
 
 import jakarta.mail.internet.MimeMessage;
-
 import r01f.core.services.mail.model.EMailRFC822Address;
 
 public interface NotifierServiceForEMail

@@ -43,7 +43,7 @@ public class NotifierPushMessage
 	}
 	public NotifierPushMessage(final String title,final String body, 
 							   final String notificationSound, 
-							   final Map<String, String> keyValueData) {
+							   final Map<String,String> keyValueData) {
 		_title = title;
 		_body = body;
 		_notificationSound = notificationSound;
@@ -52,7 +52,7 @@ public class NotifierPushMessage
 	public NotifierPushMessage(final String title,final String body, 
 							   final String notificationSound,
 							   final String collapseKey, 
-							   final Map<String, String> keyValueData) {
+							   final Map<String,String> keyValueData) {
 		_title = title;
 		_body = body;
 		_notificationSound = notificationSound;
@@ -63,7 +63,7 @@ public class NotifierPushMessage
 							   final String notificationSound,
 							   final String collapseKey,
 							   final String channelId, 
-							   final Map<String, String> keyValueData) {
+							   final Map<String,String> keyValueData) {
 		_title = title;
 		_body = body;
 		_image = image;

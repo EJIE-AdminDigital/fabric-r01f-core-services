@@ -3,7 +3,7 @@ package r01f.cloud.aws.sns.model;
 import java.util.regex.Pattern;
 
 import lombok.Getter;
-import r01f.guids.OIDTyped;
+import r01f.oids.OIDTyped;
 
 public record AWSSNSSmsSenderID(@Getter String id)
    implements OIDTyped<String> { 	// usually this should extend OIDBaseInmutable BUT it MUST have a default no-args constructor to be serializable

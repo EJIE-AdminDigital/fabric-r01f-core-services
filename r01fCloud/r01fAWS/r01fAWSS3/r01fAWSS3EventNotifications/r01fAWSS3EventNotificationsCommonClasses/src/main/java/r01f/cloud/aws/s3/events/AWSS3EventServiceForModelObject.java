@@ -1,8 +1,9 @@
 package r01f.cloud.aws.s3.events;
 
 import r01f.facets.HasOID;
-import r01f.guids.OID;
+
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 /**
  * Interface for Distributed Messaging Services.

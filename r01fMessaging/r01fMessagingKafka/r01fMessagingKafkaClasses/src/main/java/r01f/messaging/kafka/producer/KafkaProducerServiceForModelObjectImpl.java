@@ -3,11 +3,11 @@ package r01f.messaging.kafka.producer;
 import jakarta.inject.Inject;
 
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.messaging.kafka.model.KafkaMessageSubscriber;
 import r01f.messaging.kafka.serialization.KafkaSerializer;
 import r01f.messaging.producer.MessagingProducerServiceForModelObject;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 public class KafkaProducerServiceForModelObjectImpl<O extends OID ,M extends ModelObject & HasOID<O>>
 			extends KafkaProducerServiceImplBase<O,M>

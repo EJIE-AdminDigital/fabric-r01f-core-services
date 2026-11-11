@@ -8,8 +8,8 @@ import org.redisson.config.ConfigSupport;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import r01f.cache.DistributedCacheConfig;
-import r01f.guids.CommonOIDs.AppCode;
-import r01f.guids.CommonOIDs.AppComponent;
+import r01f.oids.CommonOIDs.AppCode;
+import r01f.oids.CommonOIDs.AppComponent;
 
 
 @Accessors(prefix="_")

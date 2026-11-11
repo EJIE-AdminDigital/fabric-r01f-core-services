@@ -4,9 +4,9 @@ import lombok.experimental.Accessors;
 import r01f.annotations.Immutable;
 import r01f.cloud.aws.s3.events.model.AWSS3EventServiceSubscriber;
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.model.ModelObject;
 import r01f.objectstreamer.annotations.MarshallType;
+import r01f.oids.OID;
 
 /**
  * 

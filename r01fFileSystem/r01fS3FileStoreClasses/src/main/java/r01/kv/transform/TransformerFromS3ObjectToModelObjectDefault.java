@@ -11,9 +11,9 @@ import r01.api.filestore.model.oids.S3KEYs.IsS3Key;
 import r01.kv.config.KVModuleConfig;
 import r01f.cloud.aws.s3.model.AWSS3ObjectGetResult;
 import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
-import r01f.guids.OIDs;
 import r01f.mime.MimeType;
 import r01f.objectstreamer.Marshaller;
+import r01f.oids.OIDs;
 import r01f.patterns.FactoryFrom;
 
 public class TransformerFromS3ObjectToModelObjectDefault <K extends IsS3Key,V extends S3PersistableKeyValueObject<K>>

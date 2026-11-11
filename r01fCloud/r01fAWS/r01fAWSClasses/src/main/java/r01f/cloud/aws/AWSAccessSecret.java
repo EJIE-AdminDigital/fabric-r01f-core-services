@@ -1,8 +1,8 @@
 package r01f.cloud.aws;
 
 import lombok.Getter;
-import r01f.guids.OIDTyped;
-import r01f.securitycontext.SecurityIDS.Password;
+import r01f.oids.OIDTyped;
+import r01f.oids.SecurityIDs.Password;
 
 public record AWSAccessSecret(@Getter String id)
    implements OIDTyped<String> { 	// normally this should extend OIDBaseInmutable BUT it MUST have a default no-args constructor to be serializable

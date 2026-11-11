@@ -1,9 +1,8 @@
 package r01.api.filestore.model;
 
-import r01f.guids.PersistableObjectOID;
-import r01f.model.IndexableModelObject;
 import r01f.model.ModelObject;
 import r01f.model.PersistableModelObject;
+import r01f.oids.PersistableObjectOID;
 
 
 /**
@@ -13,7 +12,6 @@ import r01f.model.PersistableModelObject;
  */
 public interface S3PersistableObject<O extends PersistableObjectOID>
 		 extends PersistableModelObject<O>,			// is persistable
-     	 		 IndexableModelObject,				// is indexable
      	 		 ModelObject {
 	// nothing
 }

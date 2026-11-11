@@ -3,11 +3,11 @@ package r01f.messaging.rabbitmq.test.guice.producer.test;
 import java.time.Instant;
 
 import jakarta.inject.Inject;
-import r01f.guids.OIDs;
 import r01f.messaging.rabbitmq.RabbitMQIds.RabbitMQQueue;
 import r01f.messaging.rabbitmq.model.RabbitMQMessageSubscriber;
 import r01f.messaging.rabbitmq.producer.RabbitMQProducerService;
 import r01f.messaging.rabbitmq.test.model.MyOIDs.MyTestOID;
+import r01f.oids.OIDs;
 import r01f.messaging.rabbitmq.test.model.MyTestModelObject;
 
 /**

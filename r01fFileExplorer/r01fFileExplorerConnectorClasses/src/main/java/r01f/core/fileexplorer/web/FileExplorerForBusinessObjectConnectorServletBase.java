@@ -11,7 +11,7 @@ import r01f.core.fileexplorer.FileExplorerConstants;
 import r01f.core.fileexplorer.FileExplorerVolume;
 import r01f.core.fileexplorer.config.FileExplorerStoreConfig;
 import r01f.core.fileexplorer.config.FileExplorerVolumeSpec;
-import r01f.guids.OID;
+import r01f.oids.OID;
 import r01f.patterns.FactoryFrom;
 import r01f.patterns.ThrowingFunction;
 import r01f.servlet.HttpRequestParamsWrapper;

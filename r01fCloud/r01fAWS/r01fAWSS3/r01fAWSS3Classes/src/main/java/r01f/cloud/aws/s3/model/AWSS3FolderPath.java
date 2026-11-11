@@ -10,7 +10,7 @@ import com.google.common.base.Splitter;
 
 import lombok.Getter;
 import r01f.annotations.Immutable;
-import r01f.guids.OIDTyped;
+import r01f.oids.OIDTyped;
 import r01f.types.Path;
 
 

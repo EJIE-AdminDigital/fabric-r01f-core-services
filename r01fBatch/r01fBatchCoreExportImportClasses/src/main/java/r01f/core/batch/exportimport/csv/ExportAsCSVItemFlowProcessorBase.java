@@ -13,7 +13,7 @@ import org.apache.commons.csv.CSVPrinter;
 
 import lombok.experimental.Accessors;
 import r01f.core.batch.ItemFlowProcessorBase;
-import r01f.securitycontext.SecurityContext;
+import r01f.model.security.context.SecurityContext;
 import r01f.util.types.collections.CollectionUtils;
 
 

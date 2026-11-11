@@ -1,8 +1,8 @@
 package r01f.core.fileexplorer;
 
 import lombok.Getter;
-import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
+import r01f.oids.OIDTyped;
 
 @MarshallType(as="volumeId")
 public record FileExplorerVolumeID(@Getter Character id) 

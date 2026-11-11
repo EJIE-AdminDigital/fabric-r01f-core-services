@@ -6,7 +6,6 @@ import com.google.inject.TypeLiteral;
 
 import r01f.facets.HasOID;
 import r01f.generics.ParameterizedTypeImpl;
-import r01f.guids.OID;
 import r01f.messaging.rabbitmq.producer.RabbitMQProducerService;
 import r01f.messaging.rabbitmq.producer.RabbitMQProducerServiceConfig;
 import r01f.messaging.rabbitmq.producer.RabbitMQProducerServiceForModelObjectImpl;
@@ -14,6 +13,7 @@ import r01f.messaging.rabbitmq.serialization.RabbitMQSerializer;
 import r01f.messaging.rabbitmq.serialization.RabbitMQSerializerForModelObjectBase;
 import r01f.messaging.rabbitmq.serialization.RabbitMQSerializerForOIDBase;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 
 public abstract class RabbitMQProducerGuiceModuleForModelObjectBase<O extends OID, M extends ModelObject & HasOID<O>>

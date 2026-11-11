@@ -10,7 +10,7 @@ import org.quartz.CronExpression;
 import org.quartz.Job;
 import org.quartz.SchedulerException;
 
-import r01f.guids.CanBeScheduledOID;
+import r01f.oids.CanBeScheduledOID;
 import r01f.scheduler.QuartzSchedulerWrapper;
 import r01f.types.TimeLapse;
 

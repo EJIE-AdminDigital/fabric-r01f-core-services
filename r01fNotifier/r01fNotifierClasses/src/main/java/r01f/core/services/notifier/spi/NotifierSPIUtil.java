@@ -15,7 +15,6 @@ import r01f.core.services.notifier.config.NotifierConfigForVoice;
 import r01f.core.services.notifier.config.NotifierConfigProviders.NotifierAppDependentConfigProviderFromProperties;
 import r01f.core.services.notifier.config.NotifierConfigProviders.NotifierAppDependentConfigProviderFromRecordProperties;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
-
 import r01f.util.types.Strings;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 

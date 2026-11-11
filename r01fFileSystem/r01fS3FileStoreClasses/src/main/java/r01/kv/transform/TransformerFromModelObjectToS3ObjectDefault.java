@@ -9,9 +9,9 @@ import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
 import r01f.cloud.aws.s3.model.AWSS3ObjectMetaDataItem;
 import r01f.cloud.aws.s3.model.AWSS3ObjectMetadataItemId;
 import r01f.cloud.aws.s3.model.AWSS3ObjectPutRequest;
-import r01f.guids.OIDs;
 import r01f.mime.MimeType;
 import r01f.objectstreamer.Marshaller;
+import r01f.oids.OIDs;
 import r01f.patterns.FactoryFrom;
 
 public class TransformerFromModelObjectToS3ObjectDefault <K extends IsS3Key,V extends S3PersistableKeyValueObject<K>>

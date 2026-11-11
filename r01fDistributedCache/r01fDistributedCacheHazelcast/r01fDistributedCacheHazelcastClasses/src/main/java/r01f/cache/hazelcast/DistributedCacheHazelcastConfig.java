@@ -11,8 +11,8 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import r01f.cache.DistributedCacheConfig;
-import r01f.guids.CommonOIDs.IsAppCode;
-import r01f.guids.CommonOIDs.IsAppComponent;
+import r01f.oids.CommonOIDs.IsAppCode;
+import r01f.oids.CommonOIDs.IsAppComponent;
 import r01f.xml.XMLStringSerializer;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 

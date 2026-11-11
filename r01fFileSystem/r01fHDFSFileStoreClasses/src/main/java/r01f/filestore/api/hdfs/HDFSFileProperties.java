@@ -12,8 +12,8 @@ import r01f.file.FilePermission;
 import r01f.file.FileProperties;
 import r01f.file.FilePropertiesBase;
 import r01f.objectstreamer.annotations.MarshallType;
-import r01f.securitycontext.SecurityIDS.LoginID;
-import r01f.securitycontext.SecurityIDS.UserGroupCode;
+import r01f.oids.SecurityIDs.LoginID;
+import r01f.oids.SecurityIDs.UserGroupCode;
 
 @MarshallType(as="hdfsFileProperties")
 @Accessors(prefix="_")

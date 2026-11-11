@@ -3,13 +3,13 @@ package r01f.messaging.kafka.test.guice.producer.test;
 import java.time.Instant;
 
 import jakarta.inject.Inject;
-import r01f.guids.OIDs;
 import r01f.messaging.kafka.KafkaIDs.KafkaTopic;
 import r01f.messaging.kafka.model.KafkaMessageSubscriber;
 import r01f.messaging.kafka.producer.KafkaProducerService;
 import r01f.messaging.kafka.test.model.MyOIDs.MyTestOID;
 import r01f.messaging.kafka.test.model.MyTestModelObject;
 import r01f.messaging.model.MessagingFactory;
+import r01f.oids.OIDs;
 
 /**
  * [ Sample ] Some sample service using a injected KafkaProducerService

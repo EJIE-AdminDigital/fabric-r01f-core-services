@@ -22,7 +22,7 @@ import org.quartz.TriggerKey;
 
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import r01f.guids.CanBeScheduledOID;
+import r01f.oids.CanBeScheduledOID;
 import r01f.scheduler.QuartzSchedulerJobKeyBuilder;
 import r01f.scheduler.QuartzSchedulerTriggerKeyBuilder;
 import r01f.scheduler.QuartzSchedulerWrapperBase;

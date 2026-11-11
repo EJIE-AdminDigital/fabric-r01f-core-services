@@ -12,8 +12,8 @@ import r01f.cloud.aws.s3.events.consumer.AWSS3EventNotification.S3EventRecord;
 import r01f.cloud.aws.s3.events.listener.AWSS3ObjectRetrieverAsync;
 import r01f.cloud.aws.s3.model.AWSS3BucketID;
 import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
+import r01f.model.security.context.SecurityContext;
 import r01f.objectstreamer.Marshaller;
-import r01f.securitycontext.SecurityContext;
 
 
 @Slf4j
@@ -91,7 +91,7 @@ public class Z99AWSS3KafkaEventListenerDelegate {
         		                   
         							.thenAcceptAsync(s3ObjectGetResult -> {
 								                                        if (s3ObjectGetResult != null ) {
-								                                            log.warn("\n\n [Z99WebhookDelegate] Async stream download completed successfully for: {}", 
+								                                            log.warn("\n\n [Z99AWSS3KafkaEventListenerDelegate] Async stream download completed successfully for: {}", 
 								                                                     s3ObjectGetResult.getKey().asString());
 								                                            
 								                                            // TODO  [ by sample app ] : Inject your background business rule core engines right here
@@ -100,7 +100,7 @@ public class Z99AWSS3KafkaEventListenerDelegate {
 								                                        }
                                     })
                                     .exceptionally(ex -> {
-						                                        log.error("[Z99WebhookDelegate] Uncaught runtime failure during worker thread parsing sequence for key '{}': {}", 
+						                                        log.error("[Z99AWSS3KafkaEventListenerDelegate] Uncaught runtime failure during worker thread parsing sequence for key '{}': {}", 
 						                                                  key.asString(), ex.getMessage(), ex);
 						                                        return null;
                                     });

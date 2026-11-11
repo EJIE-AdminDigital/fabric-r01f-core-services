@@ -5,7 +5,7 @@ import jakarta.inject.Singleton;
 
 import r01f.locale.Language;
 import r01f.locale.LanguageTextsMapBacked;
-import r01f.securitycontext.SecurityContext;
+import r01f.model.security.context.SecurityContext;
 import r01f.types.geo.GeoIDs.GeoRegionID;
 import r01f.types.geo.GeoIDs.GeoStateID;
 import r01f.types.geo.GeoRegion;

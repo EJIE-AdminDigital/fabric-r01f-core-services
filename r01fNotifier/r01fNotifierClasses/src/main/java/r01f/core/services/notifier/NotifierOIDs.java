@@ -5,9 +5,9 @@ import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import r01f.guids.OID;
-import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
+import r01f.oids.OID;
+import r01f.oids.OIDTyped;
 
 @NoArgsConstructor(access=AccessLevel.PRIVATE)
 public abstract class NotifierOIDs {

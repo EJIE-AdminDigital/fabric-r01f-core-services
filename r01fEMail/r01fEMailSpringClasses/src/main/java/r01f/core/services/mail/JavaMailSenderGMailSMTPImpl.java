@@ -4,8 +4,8 @@ import java.util.Properties;
 
 import org.springframework.mail.javamail.JavaMailSender;
 
-import r01f.securitycontext.SecurityIDS.LoginID;
-import r01f.securitycontext.SecurityIDS.Password;
+import r01f.oids.SecurityIDs.LoginID;
+import r01f.oids.SecurityIDs.Password;
 
 
 /**

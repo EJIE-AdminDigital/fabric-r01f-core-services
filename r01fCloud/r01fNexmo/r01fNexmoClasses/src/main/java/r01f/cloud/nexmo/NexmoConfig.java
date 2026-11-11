@@ -10,7 +10,7 @@ import r01f.config.ContainsConfigData;
 import r01f.exceptions.Throwables;
 import r01f.httpclient.HttpClientProxySettings;
 import r01f.httpclient.HttpProxySettingsBuilder;
-import r01f.securitycontext.SecurityIDS.Password;
+import r01f.oids.SecurityIDs.Password;
 import r01f.types.contact.Phone;
 import r01f.types.url.Url;
 import r01f.util.types.Strings;

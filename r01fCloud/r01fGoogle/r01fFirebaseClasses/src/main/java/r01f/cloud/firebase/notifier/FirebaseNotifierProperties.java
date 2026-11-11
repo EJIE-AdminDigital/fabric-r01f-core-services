@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import r01f.cloud.firebase.service.FirebaseConfig;
 import r01f.core.services.notifier.properties.NotifierImpPropertiesForPush;
-import r01f.securitycontext.SecurityIDS.SecurityToken;
+import r01f.oids.SecurityIDs.SecurityToken;
 import r01f.types.Path;
 
 public record FirebaseNotifierProperties( Path firebaseCredentialsPath, 

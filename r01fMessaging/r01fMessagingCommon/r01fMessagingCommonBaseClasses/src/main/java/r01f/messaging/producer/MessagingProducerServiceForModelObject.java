@@ -1,10 +1,10 @@
 package r01f.messaging.producer;
 
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.messaging.consumer.MessagingConsumerService;
 import r01f.messaging.model.MessageSubcriber;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 /**
  * Interface for Distributed Messaging Consumer

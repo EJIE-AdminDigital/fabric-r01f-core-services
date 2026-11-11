@@ -3,8 +3,8 @@ package r01.kv.config;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import r01f.cloud.aws.s3.client.api.AWSS3ClientConfig;
-import r01f.guids.CommonOIDs.IsAppCode;
-import r01f.guids.CommonOIDs.IsAppComponent;
+import r01f.oids.CommonOIDs.IsAppCode;
+import r01f.oids.CommonOIDs.IsAppComponent;
 
 
 @Accessors(prefix="_")

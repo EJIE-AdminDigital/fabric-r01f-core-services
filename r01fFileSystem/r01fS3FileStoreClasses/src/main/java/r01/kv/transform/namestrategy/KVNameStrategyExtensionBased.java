@@ -5,9 +5,9 @@ import org.apache.commons.io.FilenameUtils;
 import lombok.extern.slf4j.Slf4j;
 import r01.api.filestore.model.oids.S3KEYs.IsS3Key;
 import r01f.cloud.aws.s3.model.AWSS3ObjectKey;
-import r01f.guids.OIDs;
 import r01f.mime.MimeType;
 import r01f.mime.MimeTypes;
+import r01f.oids.OIDs;
 import r01f.patterns.FactoryFrom;
 import r01f.util.types.Strings;
 @Slf4j

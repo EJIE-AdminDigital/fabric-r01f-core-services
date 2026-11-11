@@ -3,8 +3,8 @@ package r01f.cloud.firebase.model;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
+import r01f.oids.OIDTyped;
 
 @NoArgsConstructor(access=AccessLevel.PRIVATE)
 public abstract class FirebaseIds {

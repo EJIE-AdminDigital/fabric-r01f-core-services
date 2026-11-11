@@ -6,7 +6,6 @@ import com.google.inject.TypeLiteral;
 
 import r01f.facets.HasOID;
 import r01f.generics.ParameterizedTypeImpl;
-import r01f.guids.OID;
 import r01f.messaging.kafka.producer.KafkaProducerService;
 import r01f.messaging.kafka.producer.KafkaProducerServiceConfig;
 import r01f.messaging.kafka.producer.KafkaProducerServiceForModelObjectImpl;
@@ -14,6 +13,7 @@ import r01f.messaging.kafka.serialization.KafkaSerializerForOIDBase;
 import r01f.messaging.kafka.serialization.KafkaSerializer;
 import r01f.messaging.kafka.serialization.KafkaSerializerForModelObjectBase;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 
 public abstract class KafkaProducerGuiceModuleForModelObjectBase<O extends OID, M extends ModelObject & HasOID<O>>

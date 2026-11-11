@@ -2,8 +2,8 @@ package r01.kv.config;
 
 
 import r01f.config.ContainsConfigData;
-import r01f.guids.CommonOIDs.IsAppCode;
-import r01f.guids.CommonOIDs.IsAppComponent;
+import r01f.oids.CommonOIDs.IsAppCode;
+import r01f.oids.CommonOIDs.IsAppComponent;
 import r01f.services.ids.ServiceIDs.CoreModule;
 
 /**

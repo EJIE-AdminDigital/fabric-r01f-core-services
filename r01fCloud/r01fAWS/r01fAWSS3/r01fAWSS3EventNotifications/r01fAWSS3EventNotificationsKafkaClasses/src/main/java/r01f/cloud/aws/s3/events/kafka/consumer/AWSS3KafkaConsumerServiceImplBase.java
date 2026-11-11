@@ -3,12 +3,10 @@ package r01f.cloud.aws.s3.events.kafka.consumer;
 import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.serialization.Deserializer;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import r01f.cloud.aws.s3.events.consumer.AWSS3EventNotification;
-import r01f.cloud.aws.s3.events.kafka.serialization.AWS3KafkaDeserializer;
 import r01f.cloud.aws.s3.events.kafka.serialization.AWSS3KafkaDeserializerForS3EventNotification;
 import r01f.cloud.aws.s3.events.kafka.serialization.AWSS3KafkaDeserializerForS3ObjectKey;
 import r01f.cloud.aws.s3.model.AWSS3ObjectKey;

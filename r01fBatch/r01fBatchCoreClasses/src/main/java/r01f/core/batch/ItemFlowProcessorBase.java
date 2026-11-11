@@ -12,8 +12,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import r01f.model.security.context.SecurityContext;
 import r01f.patterns.ProgressSubscriber;
-import r01f.securitycontext.SecurityContext;
 import r01f.types.jobs.ItemsProcessingProgress;
 
 @Slf4j

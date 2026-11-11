@@ -3,8 +3,8 @@ package r01.api.filestore.model.oids;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import r01f.facets.Facet;
-import r01f.guids.OIDTyped;
-import r01f.guids.PersistableObjectOID;
+import r01f.oids.OIDTyped;
+import r01f.oids.PersistableObjectOID;
 import r01f.types.url.UrlPath;
 
 

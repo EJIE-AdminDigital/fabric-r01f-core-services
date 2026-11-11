@@ -1,6 +1,6 @@
 package r01f.cloud.aws.s3.events.kafka;
 
-import r01f.guids.OIDTyped;
+import r01f.oids.OIDTyped;
 
 public interface IsAWSS3KafkaModelID
 	     extends OIDTyped<String> {

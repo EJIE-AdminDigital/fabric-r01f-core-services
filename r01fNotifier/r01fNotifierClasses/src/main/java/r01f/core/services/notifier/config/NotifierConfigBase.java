@@ -7,7 +7,7 @@ import r01f.core.services.notifier.config.NotifierEnums.NotifierImpl;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
 import r01f.core.services.notifier.properties.NotifiersStrategy;
-import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.oids.CommonOIDs.IsAppCode;
 import r01f.patterns.FactoryFrom;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 

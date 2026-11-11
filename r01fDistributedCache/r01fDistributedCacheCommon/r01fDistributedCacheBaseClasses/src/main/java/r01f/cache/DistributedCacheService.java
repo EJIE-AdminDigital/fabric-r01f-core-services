@@ -3,8 +3,8 @@ package r01f.cache;
 
 import r01f.debug.Debuggable;
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 import r01f.service.ServiceHandler;
 
 public interface DistributedCacheService

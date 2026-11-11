@@ -2,8 +2,8 @@ package r01f.messaging.kafka.serialization;
 
 import jakarta.inject.Inject;
 import lombok.experimental.Accessors;
-import r01f.guids.OID;
 import r01f.messaging.serialization.DeserializersForModelObjects.OIDDeserializer;
+import r01f.oids.OID;
 
 @Accessors(prefix="_")
 public class KafkaDeserializerForOIDBase<O extends OID>

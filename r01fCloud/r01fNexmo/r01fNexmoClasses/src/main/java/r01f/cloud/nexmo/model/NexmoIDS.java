@@ -2,9 +2,9 @@ package r01f.cloud.nexmo.model;
 
 import lombok.Getter;
 import r01f.annotations.Immutable;
-import r01f.guids.OIDTyped;
 import r01f.objectstreamer.annotations.MarshallType;
-import r01f.securitycontext.SecurityIDS.LoginID;
+import r01f.oids.OIDTyped;
+import r01f.oids.SecurityIDs.LoginID;
 
 public abstract class NexmoIDS {
 

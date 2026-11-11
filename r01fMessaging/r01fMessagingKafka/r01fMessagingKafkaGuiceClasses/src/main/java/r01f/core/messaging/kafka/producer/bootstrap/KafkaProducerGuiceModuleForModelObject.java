@@ -3,9 +3,9 @@ package r01f.core.messaging.kafka.producer.bootstrap;
 import com.google.inject.Binder;
 
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.messaging.kafka.producer.KafkaProducerServiceConfig;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 
 public class KafkaProducerGuiceModuleForModelObject<O extends OID, M extends ModelObject & HasOID<O>>

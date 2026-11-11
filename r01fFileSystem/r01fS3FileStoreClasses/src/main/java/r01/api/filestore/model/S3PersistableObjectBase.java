@@ -2,8 +2,8 @@ package r01.api.filestore.model;
 
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import r01f.guids.PersistableObjectOID;
 import r01f.model.PersistableModelObjectBase;
+import r01f.oids.PersistableObjectOID;
 
 
 @NoArgsConstructor

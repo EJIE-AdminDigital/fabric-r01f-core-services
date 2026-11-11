@@ -3,13 +3,13 @@ package r01f.messaging.serialization;
 
 
 import lombok.experimental.Accessors;
-import r01f.guids.OID;
-import r01f.guids.OIDs;
 import r01f.messaging.serialization.DeserializersForBasicTypes.MarshalledObjectDeserializerBase;
 import r01f.mime.MimeType;
 import r01f.mime.MimeTypes;
 import r01f.model.ModelObject;
 import r01f.objectstreamer.Marshaller;
+import r01f.oids.OID;
+import r01f.oids.OIDs;
 
 public class DeserializersForModelObjects {
 /////////////////////////////////////////////////////////////////////////////////////////

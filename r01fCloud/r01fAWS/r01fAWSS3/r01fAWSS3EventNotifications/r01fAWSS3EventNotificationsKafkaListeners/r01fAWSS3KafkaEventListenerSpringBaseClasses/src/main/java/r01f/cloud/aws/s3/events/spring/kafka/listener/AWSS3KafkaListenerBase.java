@@ -1,7 +1,6 @@
 package r01f.cloud.aws.s3.events.spring.kafka.listener;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.kafka.annotation.KafkaListener;
 
 import lombok.extern.slf4j.Slf4j;
 import r01f.cloud.aws.s3.events.consumer.AWSS3EventNotification;

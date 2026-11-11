@@ -2,7 +2,7 @@ package r01f.core.services.notifier.config;
 
 import lombok.experimental.Accessors;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
-import r01f.guids.CommonOIDs.IsAppCode;
+import r01f.oids.CommonOIDs.IsAppCode;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
 /**

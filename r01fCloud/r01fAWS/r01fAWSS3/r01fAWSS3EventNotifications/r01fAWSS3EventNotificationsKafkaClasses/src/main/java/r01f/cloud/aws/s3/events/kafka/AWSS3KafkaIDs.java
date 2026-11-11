@@ -3,14 +3,13 @@ package r01f.cloud.aws.s3.events.kafka;
 
 import java.util.Collection;
 
-import lombok.AccessLevel;
+import lombok.Getter;
+import r01f.annotations.Immutable;
 import r01f.objectstreamer.annotations.MarshallType;
+import r01f.oids.OID;
 import r01f.types.url.Host;
 import r01f.util.types.Strings;
 import r01f.util.types.collections.CollectionUtils;
-import lombok.Getter;
-import r01f.annotations.Immutable;
-import r01f.guids.OID;
 public abstract class AWSS3KafkaIDs {
 
 /////////////////////////////////////////////////////////////////////////////////////////

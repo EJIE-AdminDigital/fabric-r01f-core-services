@@ -3,9 +3,9 @@ package r01f.core.messaging.kafka.consumer.bootstrap;
 import com.google.inject.Binder;
 
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.messaging.kafka.consumer.KafkaConsumerServiceConfig;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 
 public class KafkaConsumerGuiceModuleForModelObject<O extends OID, M extends ModelObject & HasOID<O>>

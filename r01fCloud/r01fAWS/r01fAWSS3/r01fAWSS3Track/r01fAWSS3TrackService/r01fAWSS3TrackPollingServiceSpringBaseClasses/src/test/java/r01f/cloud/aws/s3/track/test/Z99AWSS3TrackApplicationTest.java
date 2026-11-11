@@ -5,8 +5,6 @@ package r01f.cloud.aws.s3.track.test;
 import java.time.Instant;
 import java.time.Year;
 import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.List;
@@ -14,6 +12,7 @@ import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +28,16 @@ import r01f.types.datetime.MonthOfYear;
 @Slf4j
 @EnableScheduling //
 @SpringBootApplication // 
+
+@ComponentScan(basePackageClasses = {	
+										
+										//[3] ( test-config ) Notifier configuration
+										Z99AWSS3TrackRESTController.class,
+										
+										
+										//[N] Common Bindings	
+										Z99SpringBootstrapConfigurationForTest.class
+								    }) // 
 public class Z99AWSS3TrackApplicationTest {
 
 	 // UTC Formatter for date-based folder segregation: e.g., 2026/07/05/
@@ -41,7 +50,7 @@ public class Z99AWSS3TrackApplicationTest {
 	    ApplicationContext springContext = SpringApplication.run(Z99AWSS3TrackApplicationTest.class,
 	    														 args);
 	    // ...just a sample of crud ops.
-	    Z99AWSS3TrackApplicationTest.processUsing(springContext);  
+	   // Z99AWSS3TrackApplicationTest.processUsing(springContext);  
 	    
 	     Thread.currentThread().join();
 	}
@@ -125,7 +134,6 @@ public class Z99AWSS3TrackApplicationTest {
             }
             
             log.info("=== [AWSS3MetadataTrackPollingService] Metadata sweep completed successfully ===");
-
         } catch (final Throwable e) {
             log.error("Critical error executing metadata polling sweep via Filer/ClientAPI", e);
         }

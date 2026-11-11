@@ -1,6 +1,6 @@
 package r01f.cloud.aws.s3.model;
 
-import r01f.guids.OIDTyped;
+import r01f.oids.OIDTyped;
 
 public interface IsAWSS3BucketID
 	     extends OIDTyped<String> {

@@ -6,9 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import lombok.extern.slf4j.Slf4j;
 import r01f.cloud.aws.s3.bootstrap.spring.AWSS3SpringBootstrapConfiguration;
-import r01f.cloud.aws.s3.client.api.AWSS3ClientAPI;
 import r01f.cloud.aws.s3.client.api.AWSS3ClientAPIProvider;
-import r01f.cloud.aws.s3.track.client.api.AWSS3ClientAPIForTrack;
 import r01f.cloud.aws.s3.track.client.api.AWSS3ClientAPIProviderForTrack;
 import r01f.cloud.aws.s3.track.spring.service.polling.AWSS3MetadataTrackPollingConfig;
 import r01f.internal.R01FAppCodes;
@@ -23,7 +21,7 @@ public class Z99SpringBootstrapConfigurationForTest  {
 //	
 /////////////////////////////////////////////////////////////////////////////////////////
 	 @Bean
-	   public Marshaller marshaller() {
+	 public Marshaller marshaller() {
 	    return MarshallerBuilder.findTypesToMarshallAt(R01FAppCodes.APP_CODE).build();
 	 }
 ////////////////////////////////////////////////////////////////////////
@@ -49,8 +47,7 @@ public class Z99SpringBootstrapConfigurationForTest  {
     }
 ////////////////////////////////////////////////////////////////////////
 ///  S3  TRACK
-////////////////////////////////////////////////////////////////////////
-	
+////////////////////////////////////////////////////////////////////////	
     @Bean    
     protected AWSS3ClientAPIProviderForTrack s3TrackApi(final AWSS3ClientAPIProvider s3Api) {    	
     	return new AWSS3ClientAPIProviderForTrack(s3Api);
@@ -58,7 +55,7 @@ public class Z99SpringBootstrapConfigurationForTest  {
     
 	@Bean
 	@ConfigurationProperties(prefix = AWSS3MetadataTrackPollingConfig.PROPERTIES_PREFIX) 
-	protected AWSS3MetadataTrackPollingConfig s3PollingConfig() {
+	protected AWSS3MetadataTrackPollingConfig s3MetadataTrackPollingConfig() {
 	    return new AWSS3MetadataTrackPollingConfig();
 	}
 }

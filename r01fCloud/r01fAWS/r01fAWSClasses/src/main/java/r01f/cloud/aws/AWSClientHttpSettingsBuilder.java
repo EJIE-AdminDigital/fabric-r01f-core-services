@@ -4,9 +4,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import r01f.httpclient.HttpClientProxySettings;
+import r01f.oids.SecurityIDs.LoginID;
+import r01f.oids.SecurityIDs.Password;
 import r01f.patterns.FactoryFrom;
-import r01f.securitycontext.SecurityIDS.LoginID;
-import r01f.securitycontext.SecurityIDS.Password;
 import r01f.types.url.Host;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 

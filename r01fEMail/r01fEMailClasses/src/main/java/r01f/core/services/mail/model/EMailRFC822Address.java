@@ -17,8 +17,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import r01f.types.contact.ContactMean;
+import r01f.types.contact.ContactMeanType;
 import r01f.types.contact.EMail;
+import r01f.types.contact.IsContactMean;
 import r01f.util.types.collections.CollectionUtils;
 
 
@@ -29,7 +30,7 @@ import r01f.util.types.collections.CollectionUtils;
 @Accessors(prefix="_")
 @RequiredArgsConstructor
 public class EMailRFC822Address
-  implements ContactMean {
+  implements IsContactMean {
 
 	private static final long serialVersionUID = -2963399480304370901L;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +80,14 @@ public class EMailRFC822Address
     	return EMailRFC822Address.asRFC822InternetAddress(this,
     													  charset);
     }
+	@Override
+	public ContactMeanType getType() {
+		return ContactMeanType.EMAIL;
+	}
+	@Override
+	public EMail asEMail() {
+		return this.getEmail();
+	}
 /////////////////////////////////////////////////////////////////////////////////////////
 //	TRANSFORM
 /////////////////////////////////////////////////////////////////////////////////////////

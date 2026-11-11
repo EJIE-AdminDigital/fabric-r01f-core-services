@@ -6,7 +6,6 @@ import com.google.inject.TypeLiteral;
 
 import r01f.facets.HasOID;
 import r01f.generics.ParameterizedTypeImpl;
-import r01f.guids.OID;
 import r01f.messaging.kafka.consumer.KafkaConsumerService;
 import r01f.messaging.kafka.consumer.KafkaConsumerServiceConfig;
 import r01f.messaging.kafka.consumer.KafkaConsumerServiceForModelObjectImpl;
@@ -14,6 +13,7 @@ import r01f.messaging.kafka.serialization.KafkaDeserializer;
 import r01f.messaging.kafka.serialization.KafkaDeserializerForModelObjectBase;
 import r01f.messaging.kafka.serialization.KafkaDeserializerForOIDBase;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 
 public abstract class KafkaConsumerGuiceModuleForModelObjectBase<O extends OID, M extends ModelObject & HasOID<O>>

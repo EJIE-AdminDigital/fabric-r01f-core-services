@@ -23,7 +23,8 @@ public class AWSS3MetadataTrackPollingConfig {
 /////////////////////////////////////////////////////////////////////////////////
 //CONSTANTS
 ////////////////////////////////////////////////////////////////////////////////
-    @Setter @Getter private AWSS3BucketID 		_bucket;    
-    @Setter @Getter private long       _fixedDelayMs;    
-    @Setter @Getter  private List<AWSS3FolderPath> _dataPaths;
+    @Setter @Getter private AWSS3BucketID 			_bucket;    
+    @Setter @Getter private long      			 	_pollingFixedDelayMs;        
+    @Setter @Getter private long      				_lastModifiedLookbackMinutes;    
+    @Setter @Getter  private List<AWSS3FolderPath> 	_dataPaths;
 }

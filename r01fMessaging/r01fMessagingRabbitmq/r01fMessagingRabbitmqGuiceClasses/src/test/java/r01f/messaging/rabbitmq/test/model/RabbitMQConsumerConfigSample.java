@@ -1,8 +1,8 @@
 package r01f.messaging.rabbitmq.test.model;
 
 import r01f.messaging.rabbitmq.consumer.RabbitMQConsumerServiceConfig;
-import r01f.securitycontext.SecurityIDS.LoginID;
-import r01f.securitycontext.SecurityIDS.Password;
+import r01f.oids.SecurityIDs.LoginID;
+import r01f.oids.SecurityIDs.Password;
 import r01f.types.url.Host;
 
 public class RabbitMQConsumerConfigSample

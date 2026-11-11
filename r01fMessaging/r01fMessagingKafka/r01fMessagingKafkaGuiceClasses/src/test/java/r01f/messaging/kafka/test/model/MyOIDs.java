@@ -1,9 +1,9 @@
 package r01f.messaging.kafka.test.model;
 
 import lombok.Getter;
-import r01f.guids.OIDTyped;
-import r01f.guids.PersistableObjectOID;
 import r01f.objectstreamer.annotations.MarshallType;
+import r01f.oids.OIDTyped;
+import r01f.oids.PersistableObjectOID;
 
 public abstract class MyOIDs {
 /////////////////////////////////////////////////////////////////////////////////////////

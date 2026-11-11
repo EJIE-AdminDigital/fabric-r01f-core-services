@@ -11,7 +11,7 @@ import r01f.core.services.notifier.config.NotifierEnums.NotifierImpl;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
 import r01f.core.services.notifier.properties.NotifierPropertiesForSMS;
-import r01f.guids.CommonOIDs.AppCode;
+import r01f.oids.CommonOIDs.AppCode;
 import r01f.types.contact.OwnedContactMean;
 import r01f.types.contact.Phone;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;

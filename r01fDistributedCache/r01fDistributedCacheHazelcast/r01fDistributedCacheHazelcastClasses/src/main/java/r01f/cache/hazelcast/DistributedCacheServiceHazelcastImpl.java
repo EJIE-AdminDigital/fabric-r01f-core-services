@@ -17,8 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 import r01f.cache.DistributedCache;
 import r01f.cache.DistributedCacheService;
 import r01f.facets.HasOID;
-import r01f.guids.OID;
 import r01f.model.ModelObject;
+import r01f.oids.OID;
 
 /**
  * Distributed cache

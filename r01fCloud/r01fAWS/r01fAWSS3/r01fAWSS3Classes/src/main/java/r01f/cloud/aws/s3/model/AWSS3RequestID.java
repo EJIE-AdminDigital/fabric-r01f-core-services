@@ -2,7 +2,7 @@ package r01f.cloud.aws.s3.model;
 
 import lombok.Getter;
 import r01f.annotations.Immutable;
-import r01f.guids.OIDTyped;
+import r01f.oids.OIDTyped;
 
 
 @Immutable

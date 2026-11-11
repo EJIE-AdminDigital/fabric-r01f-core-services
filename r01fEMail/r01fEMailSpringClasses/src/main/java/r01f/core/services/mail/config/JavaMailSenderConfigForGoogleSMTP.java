@@ -3,9 +3,9 @@ package r01f.core.services.mail.config;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import r01f.exceptions.Throwables;
-import r01f.securitycontext.SecurityIDS.LoginAndPassword;
-import r01f.securitycontext.SecurityIDS.LoginID;
-import r01f.securitycontext.SecurityIDS.Password;
+import r01f.oids.SecurityIDs.LoginAndPassword;
+import r01f.oids.SecurityIDs.LoginID;
+import r01f.oids.SecurityIDs.Password;
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
 @Accessors(prefix="_")

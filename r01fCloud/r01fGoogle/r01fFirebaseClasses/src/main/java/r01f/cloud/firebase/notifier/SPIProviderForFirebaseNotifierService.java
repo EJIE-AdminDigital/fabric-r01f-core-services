@@ -9,7 +9,6 @@ import r01f.core.services.notifier.config.NotifierConfigProviders.NotifierAppDep
 import r01f.core.services.notifier.config.NotifierEnums.NotifierImpl;
 import r01f.core.services.notifier.properties.NotifierPropertiesContainer;
 import r01f.core.services.notifier.spi.NotifierSPIProviderForPushMessage;
-
 import r01f.xmlproperties.XMLPropertiesForAppComponent;
 
 /**

@@ -1,64 +1,87 @@
 
-KAFKA SETUP STEPS
-===================
+
+--------------------------------------------------------------------------------------
+KAFKA LOCAL SETUP
+-------------------------------------------------------------------------------------
 
 
-Prerequisites:
---------------
-https://www.confluent.io/es-es/blog/set-up-and-run-kafka-on-windows-linux-wsl-2/
-- wsl2
-- java
+[1.] Download Kafka Binaries
+#####################################
+   
+   https://kafka.apache.org/community/downloads/  (kafka_2.13-4.3.1.tgz ) 
+   
+ 
+ [2.] Descomprimir : 
+ ######################################
+ 
+    kafka_2.13-4.3.1.tgz
+    C:\develop\servers\kafka_2.13-4.3.1
+        
+ 
+ [2.] Crear Script Arranque : kafka-dena.bat : 
+ #############################################
+	@echo off
+	title Servidor Kafka 4.3.0 (KRaft Standalone)
+	echo ====================================================
+	echo    Iniciando Apache Kafka v4.3.0 en Modo KRaft
+	echo ====================================================
+	
+	:: Forzar a trabajar desde la ruta raíz de Kafka donde está este script
+	cd /d "%~dp0"
+	
+	:: Usamos la ruta absoluta del directorio de trabajo actual (%CD%)
+	set "DATA_DIR=%CD%\data\kraft-combined-logs"
+	set "CONFIG_FILE=%CD%\config\server.properties"
+	
+	echo [DEBUG] Verificando ruta de config: %CONFIG_FILE%
+	
+	:: Si no existe la carpeta data, se fuerza el formateo moderno
+	if not exist "%DATA_DIR%" (
+	    echo [INFO] Detectado entorno limpio o corrupto. Formateando almacenamiento...
+	    
+	    :: CORRECCIÓN: Añadido el flag --standalone requerido en Kafka 4.x
+	    call "%CD%\bin\windows\kafka-storage.bat" format --standalone -t auwpwmsyRI63YSy8SbbIUA -c "%CONFIG_FILE%"
+	    
+	    echo ----------------------------------------------------
+	)
+	
+	echo [INFO] Lanzando el Broker de Kafka...
+	call "%CD%\bin\windows\kafka-server-start.bat" "%CONFIG_FILE%"
+    
+    
+    ( no hacer nada aún 
+    
+ [3]. Genenera UUID para la instalación
+ #########################################
+ 
+ 	C:\develop\servers\kafka_2.13-4.3.1>.\bin\windows\kafka-storage.bat random-uuid
+ 	
+ 	Debe devolver:
+ 	
+		2026-09-07T18:46:38.448860900Z main ERROR Reconfiguration failed: No configuration found for '2c7b84de' at 'null' in 'null'
+		0_xmhjwyQp6ekBy6QoCaDQ
 
-STEPS
-___________________________________________________________
+[4].  Fommatear con el UUID Generado
+########################################
 
-Steps:         https://kontext.tech/article/1047/install-and-run-kafka-320-on-wsl
-Code Samples : https://developers.redhat.com/articles/2022/06/02/how-create-kafka-consumers-and-producers-java#prerequisites
+     4.1 Cambiar ruta de logs : 
+          log.dirs=/tmp/kraft-combined-logs  --> Cambiar a : ---> log.dirs=C:/develop/servers/kafka_2.13-4.3.1/data/kraft-combined-logs
+          
+     4.2 . Format ( con el token obtnido en el paso 3 :, en este caso t 0_xmhjwyQp6ekBy6QoCaDQ 
+     		.\bin\windows\kafka-storage.bat format --standalone -t 0_xmhjwyQp6ekBy6QoCaDQ -c .\config\server.properties
+     		
+     	
+[5]. Arrancar : 
+########################################	
+	  kafka-dena.bat 
+	  
+	  ( si el puerto está ocupado se puede cambiar aqui : 
+	  
+	   Abre config\server.properties.
 
-1. [ Download latest Kafka ]
-
-    wget https://dlcdn.apache.org/kafka/3.2.0/kafka_2.13-3.2.0.tgz
-
-2. [ Unzip TAR ]
-
-    tar -xvzf  kafka_2.13-3.2.0.tgz
-
-3. [ Start Zookeeper & Kafka ]
-
-	$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
-	$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
-
-
-4.  [Create a Topic]
-
-	$KAFKA_HOME/bin/kafka-topics.sh --create --topic   default-topic  --bootstrap-server localhost:9092
-        $KAFKA_HOME/bin/kafka-topics.sh --describe --topic default-topic --bootstrap-server localhost:9092
-
------- if  wsl2/localhost is no visible from window:
-[wsl2 <ifconfig
-[cmd ]
-netsh interface portproxy add v4tov4 listenport=9092 listenaddress=0.0.0.0 connectport=9092 connectaddress=192.168.149.226
-
-
-
-5. [Read events ]
-
- $KAFKA_HOME/bin/kafka-console-consumer.sh --topic default-topic --from-beginning --bootstrap-server localhost:9092
-
-
-
-Disable IPv6 on WSL2:  https://diocesanos.es/blogs/equipotic/2015/06/01/ipv6-como-activarlo-o-desactivarlo/
--------------------------
-Desactivar
----------
-sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-
-activar
----------
-sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
-
-https://stackoverflow.com/questions/64177422/unable-to-produce-to-kafka-topic-that-is-running-on-wsl-2-from-windows
+	  
+	# Descomenta o modifica esta línea si está comentada:
+	listeners=PLAINTEXT://localhost:9093
+     
 
 

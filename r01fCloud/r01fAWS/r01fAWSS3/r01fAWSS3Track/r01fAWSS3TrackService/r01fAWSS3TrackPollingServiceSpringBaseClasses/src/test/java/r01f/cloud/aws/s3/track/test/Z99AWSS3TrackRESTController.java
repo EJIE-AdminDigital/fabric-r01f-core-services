@@ -15,7 +15,7 @@ public class Z99AWSS3TrackRESTController {
     private final Z99AWSS3MetadataTrackPollingService _pollingService;
 
     @Inject
-    public Z99AWSS3TrackRESTController(Z99AWSS3MetadataTrackPollingService pollingService) {
+    public Z99AWSS3TrackRESTController(final Z99AWSS3MetadataTrackPollingService pollingService) {
         _pollingService = pollingService;
     }
 

@@ -1,6 +1,6 @@
 package r01f.core.services.notifier;
 
-import r01f.guids.CommonOIDs.AppCode;
+import r01f.oids.CommonOIDs.AppCode;
 
 
 

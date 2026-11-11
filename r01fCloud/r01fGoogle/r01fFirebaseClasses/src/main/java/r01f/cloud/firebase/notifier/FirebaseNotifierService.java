@@ -25,7 +25,7 @@ import r01f.core.services.notifier.NotifierServiceResponse;
 import r01f.core.services.notifier.NotifierServiceResponseError;
 import r01f.core.services.notifier.NotifierServiceResponseOK;
 import r01f.core.services.notifier.config.NotifierEnums.NotifierType;
-import r01f.guids.CommonOIDs.AppCode;
+import r01f.oids.CommonOIDs.AppCode;
 import r01f.patterns.Factory;
 import r01f.util.types.collections.CollectionUtils;
 

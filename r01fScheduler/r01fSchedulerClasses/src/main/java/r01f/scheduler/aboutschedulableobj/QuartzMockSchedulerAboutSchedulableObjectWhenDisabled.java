@@ -10,7 +10,7 @@ import org.quartz.SchedulerException;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import r01f.guids.CanBeScheduledOID;
+import r01f.oids.CanBeScheduledOID;
 import r01f.scheduler.QuartzMockSchedulerWhenDisabled;
 import r01f.types.TimeLapse;
 

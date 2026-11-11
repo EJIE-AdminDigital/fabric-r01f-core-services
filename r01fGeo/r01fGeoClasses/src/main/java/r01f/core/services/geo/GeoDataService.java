@@ -1,8 +1,8 @@
 package r01f.core.services.geo;
 
-import r01f.securitycontext.SecurityContext;
 import r01f.types.geo.GeoIDs.GeoRegionID;
 import r01f.types.geo.GeoIDs.GeoStateID;
+import r01f.model.security.context.SecurityContext;
 import r01f.types.geo.GeoRegion;
 import r01f.types.geo.GeoState;
 

@@ -1,8 +1,8 @@
 package r01f.messaging.rabbitmq.serialization;
 
 import lombok.experimental.Accessors;
-import r01f.guids.OID;
 import r01f.messaging.serialization.SerializersForModelObjects.OIDSerializerBase;
+import r01f.oids.OID;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //Serializer For OID

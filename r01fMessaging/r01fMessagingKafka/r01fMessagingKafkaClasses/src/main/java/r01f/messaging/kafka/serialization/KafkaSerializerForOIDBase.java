@@ -1,7 +1,7 @@
 package r01f.messaging.kafka.serialization;
 
-import r01f.guids.OID;
 import r01f.messaging.serialization.SerializersForModelObjects.OIDSerializerBase;
+import r01f.oids.OID;
 
 public class KafkaSerializerForOIDBase<O extends OID>
 	 extends OIDSerializerBase<O>

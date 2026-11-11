@@ -5,7 +5,7 @@ import java.util.Collection;
 import jakarta.servlet.http.HttpServletRequest;
 import r01f.core.fileexplorer.FileExplorerVolume;
 import r01f.core.fileexplorer.config.FileExplorerVolumeSpec;
-import r01f.guids.OID;
+import r01f.oids.OID;
 import r01f.types.Path;
 
 /**
